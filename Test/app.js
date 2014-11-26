@@ -21,7 +21,7 @@ $(document).ready(function () {
     });
 });
 
-function makePlayerDict() {
+function getPlayerDict() {
     var playerDict;
     $.getJSON('http://students.washington.edu/alexhngo/info343/Everything-Sports/data/players.json')
         .done(function (data) {
