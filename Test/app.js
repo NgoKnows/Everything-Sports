@@ -21,12 +21,12 @@ $(document).ready(function () {
     });
 });
 
-function getPlayerDict() {
-    var playerDict;
+function getPlayerDict(){
+    var playerDict = {};
     $.getJSON('http://students.washington.edu/alexhngo/info343/Everything-Sports/data/players.json')
         .done(function (data) {
             data.forEach(function(player){
-                playerDict[player.name] = player.stats;
+                playerDict.player.name = player.stats;
             })
         });
     }
