@@ -11,7 +11,7 @@ $(document).ready(function () {
         for (var i = 0; i < playerArray.length - 1; i++) {
             var playerName = (playerArray[i] + " " + playerArray[i + 1]).toLowerCase();
             console.log(playerName);
-            console.log(checkIfPlayer(playerName));
+            checkIfPlayer(playerName);
             /*if (checkIfPlayer(playerName) != false) {
                 //console.log(playerName);*/
            // }
@@ -25,7 +25,7 @@ function checkIfPlayer(playerName) {
         .done(function (data) {
             console.log(data);
             data.forEach(function(player){
-                console.log(player[0]);
+                //console.log(player);
             })
         });
     }
