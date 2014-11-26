@@ -6,6 +6,7 @@
 
 $(document).ready(function () {
     $('#submit').click(function () {
+        var playerDict = getPlayerDict();
         var playerString = $('#team').val();
         var playerArray = playerString.split(/\s+/);
         for (var i = 0; i < playerArray.length - 1; i++) {
@@ -16,15 +17,16 @@ $(document).ready(function () {
                 //console.log(playerName);*/
            // }
         }
-        checkIfPlayer('hi')
+        //checkIfPlayer('hi')
     });
 });
 
-function checkIfPlayer(playerName) {
+function makePlayerDict() {
+    var playerDict;
     $.getJSON('http://students.washington.edu/alexhngo/info343/Everything-Sports/data/players.json')
         .done(function (data) {
             data.forEach(function(player){
-                console.log(player);
+                playerDict[player.name] = player.stats;
             })
         });
     }
