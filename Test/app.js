@@ -11,7 +11,7 @@ $(document).ready(function () {
         for (var i = 0; i < playerArray.length - 1; i++) {
             var playerName = (playerArray[i] + " " + playerArray[i + 1]).toLowerCase();
             //console.log(playerName);
-            checkIfPlayer(playerName);
+            //checkIfPlayer(playerName);
             /*if (checkIfPlayer(playerName) != false) {
                 //console.log(playerName);*/
            // }
@@ -23,9 +23,8 @@ $(document).ready(function () {
 function checkIfPlayer(playerName) {
     $.getJSON('http://students.washington.edu/alexhngo/info343/Everything-Sports/data/players.json')
         .done(function (data) {
-            console.log(data);
             data.forEach(function(player){
-                //console.log(player);
+                console.log(player);
             })
         });
     }
