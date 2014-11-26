@@ -29,6 +29,7 @@ function getPlayerDict(){
                 playerDict[player.name] = player.stats;
             })
         });
+    print playerDict;
     }
     //console.log(playerName);
     
