@@ -27,6 +27,7 @@ function getPlayerDict(){
         .done(function (data) {
             data.forEach(function(player){
                 playerDict[player.name] = player.stats;
+                console.log(playerDict);
             })
         });
     console.log(playerDict);
