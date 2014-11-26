@@ -10,7 +10,7 @@ $(document).ready(function () {
         var playerArray = playerString.split(/\s+/);
         for (var i = 0; i < playerArray.length - 1; i++) {
             var playerName = (playerArray[i] + " " + playerArray[i + 1]).toLowerCase();
-            console.log(playerName);
+            //console.log(playerName);
             checkIfPlayer(playerName);
             /*if (checkIfPlayer(playerName) != false) {
                 //console.log(playerName);*/
