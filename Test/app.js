@@ -3,10 +3,10 @@
     app.js, main Angular application script
     define your module and controllers here
 */
+var playerDict = getPlayerDict();
 
 $(document).ready(function () {
     $('#submit').click(function () {
-        var playerDict = getPlayerDict();
         console.log(playerDict);
         var playerString = $('#team').val();
         var playerArray = playerString.split(/\s+/);
@@ -23,15 +23,15 @@ $(document).ready(function () {
 });
 
 function getPlayerDict() {
-    var playerDict = {};
+    var playerDict1 = {};
     $.getJSON('http://students.washington.edu/alexhngo/info343/Everything-Sports/data/players.json')
         .done(function (data) {
             data.forEach(function (player) {
-                playerDict[player.name] = player.stats;
+                playerDict1[player.name] = player.stats;
             })
-            console.log(playerDict);
+            console.log(playerDict1);
         });
-    return playerDict;
+    return playerDict1;
 }
 
 /*function getPlayerDict1() {
