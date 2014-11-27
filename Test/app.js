@@ -7,6 +7,7 @@
 $(document).ready(function () {
     $('#submit').click(function () {
         var playerDict = getPlayerDict();
+        console.log(playerDict);
         var playerString = $('#team').val();
         var playerArray = playerString.split(/\s+/);
         for (var i = 0; i < playerArray.length - 1; i++) {
