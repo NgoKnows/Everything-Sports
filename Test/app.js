@@ -27,9 +27,9 @@ function getPlayerDict() {
     $.getJSON('http://students.washington.edu/alexhngo/info343/Everything-Sports/data/players.json')
         .done(function (data) {
             data.forEach(function (player) {
-                console.log(player.name.type);
                 playerDict[player.name] = player.stats;
             })
+            console.log(playerDict);
             return playerDict;
         });
 }
