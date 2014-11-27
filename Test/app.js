@@ -30,8 +30,8 @@ function getPlayerDict() {
                 playerDict[player.name] = player.stats;
             })
             console.log(playerDict);
-            return playerDict;
         });
+    return playerDict;
 }
 
 /*function getPlayerDict1() {
