@@ -12,8 +12,8 @@ $(document).ready(function () {
         for (var i = 0; i < playerArray.length - 1; i++) {
             console.log(playerArray[i].substring(playerArray[i].length - 1, playerArray[i].length));
             console.log(playerArray[i+1].substring(playerArray[i+1].length - 1, playerArray[i+1].length))
-            if(playerArray[i].substring(playerArray[i].length - 1, playerArray[i].length)
-               && playerArray[i+1].substring(playerArray[i+1].length - 1, playerArray[i+1].length)){
+            if(playerArray[i].substring(playerArray[i].length - 1, playerArray[i].length) == '.'
+               && playerArray[i+1].substring(playerArray[i+1].length - 1, playerArray[i+1].length) = '.'){
                 console.log('here');
                 playerArray[i+1] = playerArray[i] + playerArray[i+1];
                 i = i+1;
