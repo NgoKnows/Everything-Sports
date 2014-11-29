@@ -15,7 +15,7 @@ $(document).ready(function () {
             if(playerArray[i].substring(playerArray[i].length - 1, playerArray[i].length) == '.'
                && playerArray[i+1].substring(playerArray[i+1].length - 1, playerArray[i+1].length) == '.'){
                 console.log('here');
-                playerArray[i+1] = playerArray[i] + playerArray[i+1];
+                playerArray[i+1] = playerArray[i].toUpperCase() + playerArray[i+1].toUpperCase();
                 i = i+1;
             }
             var playerName = getPlayerName(playerArray[i], playerArray[i+1]);
