@@ -29,7 +29,7 @@ $(document).ready(function () {
 
 function getPlayerName(firstName, lastName) {
     var playerFirstName = firstName.substring(0, 1).toUpperCase() +
-        firstName.substring(1, firstName.length).toLowerCase();
+        firstName.substring(1, firstName.length);
     var playerLastName = lastName.substring(0, 1).toUpperCase() +
         lastName.substring(1, lastName.length).toLowerCase();
     var playerName = playerFirstName + ' ' + playerLastName;
