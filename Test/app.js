@@ -10,12 +10,12 @@ $(document).ready(function () {
         var playerString = $('#team').val();
         var playerArray = playerString.split(/\s+/);
         for (var i = 0; i < playerArray.length - 1; i++) {
-            if(playerArray[i+3] == '.' && playerArray[i+3] == '.'){
+            /*if(playerArray[i+3] == '.' && playerArray[i+3] == '.'){
                 console.log('here');
                 playerArray[i+3] = playerArray[i] + playerArray[i+1] +
                     playerArray[i+2] + playerArray[i+3];
                 i = i+3;
-            }
+            }*/
             var playerName = getPlayerName(playerArray[i], playerArray[i+1]);
             console.log('player to be checked: ' + playerName);
             if (checkIfPlayer(playerName)) {
