@@ -14,6 +14,7 @@ $(document).ready(function () {
                 playerArray[i] = playerArray[i] + playerArray[i+1] +
                     playerArray[i+2] + playerArray[i+3];
                 i = i+3;
+            }
             var playerName = getPlayerName(playerArray[i], playerArray[i+1]);
             console.log('player to be checked: ' + playerName);
             if (checkIfPlayer(playerName)) {
