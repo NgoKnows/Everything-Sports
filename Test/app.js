@@ -12,7 +12,6 @@ $(document).ready(function () {
         var playerArray = playerString.split(/\s+/);
         for (var i = 0; i < playerArray.length - 1; i++) {
             var playerName = getPlayerName(playerArray[i], playerArray[i + 1]);
-            //console.log('check this player: ' + playerName);
             if(checkIfPlayer(playerName)){
                 console.log(playerName);
             }
@@ -21,12 +20,11 @@ $(document).ready(function () {
 });
 
 function getPlayerName(firstName, lastName) {
-    var playerFirstName = firstName.substring(0, 1).toUpperCase +
-        firstName.substring(1, firstName.length).toLowerCase;
-    var playerLastName = lastName.substring(0, 1).toUpperCase +
-        lastName.substring(1, lastName.length).toLowerCase;
+    var playerFirstName = firstName.substring(0, 1).toUpperCase() +
+        firstName.substring(1, firstName.length).toLowerCase();
+    var playerLastName = lastName.substring(0, 1).toUpperCase() +
+        lastName.substring(1, lastName.length).toLowerCase();
     var playerName = playerFirstName + playerLastName;
-    console.log(playerName);
     return playerName;
 }
 
