@@ -20,7 +20,7 @@ $(document).ready(function () {
             var playerName = getPlayerName(playerArray[i], playerArray[i+1]);
             console.log('player to be checked: ' + playerName);
             if (checkIfPlayer(playerName)) {
-                team.append(playerName);
+                team.push(playerName);
             }
         }
         console.log(team);
