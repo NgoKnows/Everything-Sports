@@ -10,8 +10,10 @@ $(document).ready(function () {
         var playerString = $('#team').val();
         var playerArray = playerString.split(/\s+/);
         for (var i = 0; i < playerArray.length - 1; i++) {
+            console.log(playerArray[i].substring(playerArray[i].length));
+            console.log(playerArray[i+1].substring(playerArray[i+1].length, playerArray[i+1].length+ 1))
             if(playerArray[i].substring(playerArray[i].length, playerArray[i].length+ 1)
-               && playerArray[i].substring(playerArray[i+1].length, playerArray[i+1].length+ 1)){
+               && playerArray[i+1].substring(playerArray[i+1].length, playerArray[i+1].length+ 1)){
                 console.log('here');
                 playerArray[i+1] = playerArray[i] + playerArray[i+1];
                 i = i+1;
