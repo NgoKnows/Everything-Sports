@@ -7,12 +7,11 @@ var playerDict = getPlayerDict();
 
 $(document).ready(function () {
     $('#submit').click(function () {
-        console.log(playerDict);
         var playerString = $('#team').val();
         var playerArray = playerString.split(/\s+/);
         for (var i = 0; i < playerArray.length - 1; i++) {
             var playerName = getPlayerName(playerArray[i], playerArray[i + 1]);
-            if(checkIfPlayer(playerName)){
+            if (checkIfPlayer(playerName)) {
                 console.log(playerName);
             }
         }
@@ -24,7 +23,7 @@ function getPlayerName(firstName, lastName) {
         firstName.substring(1, firstName.length).toLowerCase();
     var playerLastName = lastName.substring(0, 1).toUpperCase() +
         lastName.substring(1, lastName.length).toLowerCase();
-    var playerName = playerFirstName + playerLastName;
+    var playerName = playerFirstName + ' ' + playerLastName;
     return playerName;
 }
 
@@ -35,19 +34,18 @@ function checkIfPlayer(playerName) {
     return false;
 }
 
-    function getPlayerDict() {
-        var playerDict1 = {};
-        $.getJSON('http://students.washington.edu/alexhngo/info343/Everything-Sports/data/players.json')
-            .done(function (data) {
-                data.forEach(function (player) {
-                    playerDict1[player.name] = player.stats;
-                })
-                console.log(playerDict1);
-            });
-        return playerDict1;
-    }
+function getPlayerDict() {
+    var playerDict1 = {};
+    $.getJSON('http://students.washington.edu/alexhngo/info343/Everything-Sports/data/players.json')
+        .done(function (data) {
+            data.forEach(function (player) {
+                playerDict1[player.name] = player.stats;
+            })
+        });
+    return playerDict1;
+}
 
-    /*function getPlayerDict1() {
+/*function getPlayerDict1() {
     var playerDict = {};
     $.ajax({
         url: 'http://students.washington.edu/alexhngo/info343/Everything-Sports/data/players.json',
@@ -57,9 +55,9 @@ function checkIfPlayer(playerName) {
         }
     })
 }*/
-    //console.log(playerName);
+//console.log(playerName);
 
-    /*var playerNameArray = playerName.split(" ");
+/*var playerNameArray = playerName.split(" ");
     var urlToCheck = 'http://www.basketball-reference.com/players/' + playerNameArray[1].charAt(0) + '/' +
         playerNameArray[1].substring(0, 5) + playerNameArray[0].substring(0, 2) + '01.html';
     return $.ajax({
