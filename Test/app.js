@@ -29,6 +29,7 @@ function getPlayerName(firstName, lastName) {
 }
 
 function checkIfPlayer(playerName) {
+    console.log(playerDict.hasOwnProperty(playerName));
     if (playerDict.hasOwnProperty(playerName)) {
         return true;
     }
