@@ -25,7 +25,7 @@ function getPlayerName(firstName, lastName) {
         firstName.substring(1, firstName.length).toLowerCase;
     var playerLastName = lastName.substring(0, 1).toUpperCase +
         lastName.substring(1, lastName.length).toLowerCase;
-    playerName = playerFirstName + playerLastName;
+    var playerName = playerFirstName + playerLastName;
     return playerName;
 }
 
