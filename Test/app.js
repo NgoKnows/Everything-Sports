@@ -7,23 +7,23 @@ var playerDict = getPlayerDict();
 
 $(document).ready(function () {
     $('#submit').click(function () {
+        var team = [];
         var playerString = $('#team').val();
         var playerArray = playerString.split(/\s+/);
         for (var i = 0; i < playerArray.length - 1; i++) {
-            console.log(playerArray[i].substring(playerArray[i].length - 1, playerArray[i].length));
-            console.log(playerArray[i+1].substring(playerArray[i+1].length - 1, playerArray[i+1].length))
             if(playerArray[i].substring(playerArray[i].length - 1, playerArray[i].length) == '.'
                && playerArray[i+1].substring(playerArray[i+1].length - 1, playerArray[i+1].length) == '.'){
-                console.log('here');
                 playerArray[i+1] = playerArray[i].toUpperCase() + playerArray[i+1].toUpperCase();
                 i = i+1;
             }
+
             var playerName = getPlayerName(playerArray[i], playerArray[i+1]);
             console.log('player to be checked: ' + playerName);
             if (checkIfPlayer(playerName)) {
-                console.log(playerName);
+                team.append(playerName);
             }
         }
+        console.log(team);
     });
 });
 

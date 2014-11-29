@@ -6,7 +6,7 @@ import string
 
 def getLetterPages():
     letter_pages = []
-    for letter in list(string.ascii_lowercase):
+    for letter in list("a"):
         letter_pages.append("http://www.basketball-reference.com/players/" + letter + "/")
     return letter_pages
 
@@ -15,7 +15,7 @@ def getLinks():
     activePlayers = []
 
     for page in pageURLs:
-        time.sleep(1)
+        time.sleep(2)
         cur_url = urllib.urlopen(page)
         html = cur_url.read()
 
@@ -29,14 +29,12 @@ def getLinks():
     return activePlayers
 
 def makeJson():
-    '''urlList = getLinks()'''
-    urlList = ["http://www.basketball-reference.com/players/a/acyqu01.html"]
+    urlList = getLinks()
 
-    playerDict = dict()
+    playerList = []
 
     for url in urlList:
-        print len(playerDict)
-        time.sleep(1)
+        time.sleep(2)
 
         cur_url = urllib.urlopen(url)
         html = cur_url.read()
@@ -54,22 +52,23 @@ def makeJson():
                      "BLK", "TOV", "PF", "PTS"]
 
             statsDict = dict()
-            playerDict[name] = statsDict
-
+            playerDict = dict()
+            playerDict["name"] = name
 
 
             for i in range(4, len(perGameArray)):
                 stat = perGameArray[i]
                 category = stats[i-4]
-                '''print category
-                print unicode(stat.contents[0]).encode('ascii', 'replace')'''
                 if(len(stat.contents) == 0):
-                    playerDict[name][category] = 0
+                    statsDict[category] = 0
                 else:
-                    playerDict[name][category] = unicode(stat.contents[0]).encode('ascii', 'replace')
+                    statsDict[category] = unicode(stat.contents[0]).encode('ascii', 'replace')
 
-    with open('data.txt', 'w') as outfile:
-        json.dump(playerDict, outfile)
+            playerDict["stats"] = statsDict
+            playerList.append(playerDict)
+
+    with open('../data/data.json', 'w') as outfile:
+        json.dump(playerList, outfile)
 
 def main():
     makeJson()
