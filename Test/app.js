@@ -12,7 +12,7 @@ $(document).ready(function () {
         var playerArray = playerString.split(/\s+/);
         for (var i = 0; i < playerArray.length - 1; i++) {
             var playerName = getPlayerName(playerArray[i], playerArray[i + 1]);
-            console.log('check this player: ' + playerName);
+            //console.log('check this player: ' + playerName);
             if(checkIfPlayer(playerName)){
                 console.log(playerName);
             }
@@ -26,6 +26,7 @@ function getPlayerName(firstName, lastName) {
     var playerLastName = lastName.substring(0, 1).toUpperCase +
         lastName.substring(1, lastName.length).toLowerCase;
     var playerName = playerFirstName + playerLastName;
+    console.log(playerName);
     return playerName;
 }
 
