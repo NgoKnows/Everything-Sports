@@ -34,7 +34,11 @@ angular.module('FantasyTeam', [])
         $scope.hoverOverRow = function () {
             $scope.curRow = this.$index;
         }
-        //$scope.deletePlayer = function(
+        $scope.deletePlayer = function () {
+            console.log(this.$index);
+            playerList.splice(this.$index, this.$index + 1);
+            $scope.players = playerList;
+        }
     });
 
 
