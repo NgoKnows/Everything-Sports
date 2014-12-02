@@ -6,6 +6,41 @@
 var playerDict = getPlayerDict();
 var playerList;
 
+angular.module('FantasyTeam', [])
+    .controller('TeamController', function ($scope) {
+        $scope.players = playerList;
+        $scope.sortCat = 'pos';
+        $scope.statCats = ["POS", "G", "GS", "MP", "FG", "FGA", "FG%", "3P", "3PA", "3P%", "2P", "2PA",
+                     "2P%", "FT", "FTA", "FT%", "ORB", "DRB", "TRB", "AST", "STL",
+                     "BLK", "TOV", "PF", "PTS"];
+        $scope.refreshPlayerList = function () {
+            getTeam();
+            console.log(playerList);
+            $scope.players = playerList;
+        };
+        $scope.sortBy = function (sortCat) {
+            console.log(sortCat);
+            if ($scope.sortCat == sortCat) {
+                $scope.sortReverse = !$scope.sortReverse;
+            } else {
+                $scope.sortCat = sortCat;
+                $scope.sortReverse = false;
+            }
+        }
+        $scope.hoverOverCol = function () {
+            console.log(this.$index);
+            $scope.curCol = this.$index;
+        }
+        $scope.hoverOverRow = function () {
+            $scope.curRow = this.$index;
+        }
+        //$scope.deletePlayer = function(
+    });
+
+
+
+
+/*
 $("table").delegate('td','mouseover mouseleave', function(e) {
     if (e.type == 'mouseover') {
       $(this).parent().addClass("hover");
@@ -15,11 +50,11 @@ $("table").delegate('td','mouseover mouseleave', function(e) {
       $(this).parent().removeClass("hover");
       $("colgroup").eq($(this).index()).removeClass("hover");
     }
-});
+});*/
 
 function getTeam() {
     var team = [];
-    var playerString = $('#team').val().replace(/\,/g,' ');
+    var playerString = $('#team').val().replace(/\,/g, ' ');
     console.log(playerString);
     var playerArray = playerString.split(/\s+/);
     for (var i = 0; i < playerArray.length - 1; i++) {
@@ -75,7 +110,7 @@ function getPlayerList(playersOnTeam) {
                      "2P%", "FT", "FTA", "FT%", "ORB", "DRB", "TRB", "AST", "STL",
                      "BLK", "TOV", "PF", "PTS"];
         var statistics = [];
-        statCats.forEach(function(stat){
+        statCats.forEach(function (stat) {
             statistics.push(playerDict[player][stat]);
         })
         console.log(statistics);
@@ -86,28 +121,3 @@ function getPlayerList(playersOnTeam) {
     })
     return playerList1;
 }
-
-
-angular.module('FantasyTeam', [])
-    .controller('TeamController', function ($scope) {
-        $scope.players = playerList;
-        $scope.sortCat = 'pos';
-        $scope.statCats = ["POS", "G", "GS", "MP", "FG", "FGA", "FG%", "3P", "3PA", "3P%", "2P", "2PA",
-                     "2P%", "FT", "FTA", "FT%", "ORB", "DRB", "TRB", "AST", "STL",
-                     "BLK", "TOV", "PF", "PTS"];
-        $scope.refreshPlayerList = function () {
-            getTeam();
-            console.log(playerList);
-            $scope.players = playerList;
-        };
-        $scope.sortBy = function (sortCat){
-            console.log(sortCat);
-            if($scope.sortCat == sortCat){
-                $scope.sortReverse = !$scope.sortReverse;
-            } else{
-                $scope.sortCat = sortCat;
-                $scope.sortReverse = false;
-            }
-        //$scope.deletePlayer = function(
-    }
-});
