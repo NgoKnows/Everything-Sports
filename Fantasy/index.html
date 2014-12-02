@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="Home page for Fantasy">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/main.css">
+
+    <title>Fantasy Sports</title>
+
+</head>
+
+<body ng-app="FantasyTeam" ng-controller="TeamController">
+    <header>
+        <h1>Fantasy Module</h1>
+    </header>
+
+    <section id="teaminput">
+        <textarea class="form-control" rows="8" cols="2" type="text" name="comment" id="team" placeholder="Your team here!"></textarea>
+        <div class="form-group">
+            <button class="btn btn-default" ng-click="refreshPlayerList()" id="submit">Make My Team!</button>
+        </div>
+    </section>
+    <section>
+        <table class="table" id="teamtable">
+            <colgroup ng-repeat="cat in statCats"></colgroup>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th ng-repeat="cat in statCats" ng-click="sortBy(cat)">{{cat}}</th>
+                    <th>Remove</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="player in players">
+                    <td>{{player.name}}</td>
+                    <td ng-repeat="stat in player.stats track by $index">{{stat}}</td>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </section>
+
+</body>
+
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.2/angular.min.js"></script>
+<script src="app.js"></script>
