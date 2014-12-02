@@ -25,6 +25,9 @@ body{
 .hover{
     background-color: #606060;
 }
+
+input[type=checkbox]{
+        margin-left: 1em;
+}
     
 
-    
