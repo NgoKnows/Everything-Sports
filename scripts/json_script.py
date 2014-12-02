@@ -66,7 +66,8 @@ def main():
     # print '###################################'
     # print articles, len(articles)
     articles_json = json.dumps(articles)
-    return articles_json
+    with open('../data/articles.json', 'w') as outfile:
+        json.dump(articles_json, outfile)
 
 
 
