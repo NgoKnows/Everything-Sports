@@ -3,7 +3,7 @@
 <html lang="en">
 	<head>
 		<title>Sports News</title>
-		<link rel="stylesheet" type='text/css' href="../css/main.css">
+		<link rel="stylesheet" type='text/css' href="css/main.css" href="../css/main.css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 	</head>
 
@@ -13,18 +13,20 @@
 				<h1>Everything Sports News</h1>
 			</header>
 
-			<h3 ng-click="click()">Latest stories:</h3>
+			<h2 ng-click="click()">See latest stories: </h2>
 
 			<table class="table">
-				<tbody>
-					<tr ng-repeat="article in articles">
-						<td>{{article.title}}</td>
-						<td>{{article.date}}</td>
-						<td>{{article.description}}</td>
-						<td>{{article.link}}</td>
-						<td>{{article.creator}}</td>
-					</tr>
-				</tbody>
+				<div class="table_style"> 
+					<tbody>
+						<tr ng-repeat="article in articles">
+							<td><h3 class="style">Title: {{article.title}}</h3></td>
+							<td>Publish Date: {{article.date}}</td>
+							<td>Summary: {{article.description}}</td>
+							<td>Full Article: <a href={{article.link}}>CLICK</a> to read more.</td>
+							<td>Author: {{article.creator}}</td>
+						</tr>
+					</tbody>
+				</div>
 			</table>	
 		</main>
 	</body>

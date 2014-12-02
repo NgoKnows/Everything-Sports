@@ -12,31 +12,29 @@ angular.module('sports_news', [])
 		console.log('here');
 	});
 
-
-
-
 function get_articles() {
 	var articles = [];
     $.getJSON('../data/articles.json')
-        .done(function (data) {
-            data.forEach(function (article) {
+        .done(function(data) {
+        	data = JSON.parse(data);
+            data.forEach(function(article) {
             	article['hidden'] = true;
                 articles.push(article);
             })
-        });
+        })
     return articles;
 }
 
-function find_articles(keywords, $scope) {
-	var articles = get_articles();
-	$scope.articles.forEach(function(article) {
-		keywords.forEach(function(search_word) {
-			if (search_word in article['title'] || search_word in article['description'] || search_word in article['link'] || search_word in article['url']) {
-				article['hidden'] = false;
-				console.log('contains keyword, unhidden');
-			}
-		})
-	});
-	console.log(articles);
-	return articles;
-}
+// function find_articles(keywords, $scope) {
+// 	var articles = get_articles();
+// 	$scope.articles.forEach(function(article) {
+// 		keywords.forEach(function(search_word) {
+// 			if (search_word in article['title'] || search_word in article['description'] || search_word in article['link'] || search_word in article['url']) {
+// 				article['hidden'] = false;
+// 				console.log('contains keyword, unhidden');
+// 			}
+// 		})
+// 	});
+// 	console.log(articles);
+// 	return articles;
+// }

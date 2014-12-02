@@ -29,5 +29,9 @@ body{
 input[type=checkbox]{
         margin-left: 1em;
 }
+
+h3 {
+    font-size: 25px;
+}
     
 
