@@ -27,7 +27,8 @@
     </section>
     <section>
         <table class="table" id="teamtable">
-            <colgroup ng-repeat="cat in statCats"></colgroup>
+            <colgroup></colgroup>
+            <colgroup ng-repeat="cat in statCats" ng-class="{ hover: curCol == $index}"></colgroup>
             <thead>
                 <tr>
                     <th>Name</th>
@@ -36,11 +37,11 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="player in players">
+                <tr ng-repeat="player in players" ng-class="{ hover: curRow == $index }" ng-mouseover="hoverOverRow()">
                     <td>{{player.name}}</td>
-                    <td ng-repeat="stat in player.stats track by $index">{{stat}}</td>
+                    <td ng-mouseover="hoverOverCol()" ng-repeat="stat in player.stats track by $index">{{stat}}</td>
                     <td>
-                        <input type="checkbox">
+                        <input type="checkbox" ng-click="deletePlayer()">
                     </td>
                 </tr>
 
