@@ -1,16 +1,15 @@
 #!/usr/bin/env python
 
-
+import cookielib
+import datetime
+import re
+import string
+import sys
 import time
 import urllib2
-from urllib2 import urlopen
-import re
-import cookielib, urllib2
-from cookielib import CookieJar
-import datetime
- 
+import json
 
-urls = {
+URLS = {
     'top': 'http://sports.espn.go.com/espn/rss/news',
     'nfl': 'https://sports.espn.go.com/espn/rss/nfl/news',
     'nba': 'https://sports.espn.go.com/espn/rss/nba/news',
@@ -21,33 +20,58 @@ urls = {
     'boxing': 'https://sports.espn.go.com/espn/rss/boxing/news'
 }
 
-cj = CookieJar()
-opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cj))
+opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cookielib.CookieJar()))
 opener.addheaders = [('User-agent', 'Mozilla/5.0')]
 
 
-def main(keyword='source'):
+def main():
     """Pulls all links and headlines in RSS feed"""
 
-    for url in urls:
+    articles = []
+    article = {}
+    a = 5;
+    for key, url in URLS.iteritems():
         try:
-            page = urls[url]
-            source_code = opener.open(page).read()
-
+            source_code = opener.open(url).read()
+            # print '===>', source_code
             try:
-                for code in source_code:
-                    titles = re.findall(r'<title>(.*?)</title>', source_code)
-                    links = re.findall(r'<link>(.*?)</link>', source_code)
+            	items = re.findall(r'<item>(.*?)</item>', source_code, re.DOTALL)
+            	# print '===>', items
 
-                    for title in titles:
-                        if keyword in title:
-                            print title
-                    
+                for item in items:
+                    article = {}
+                    article['title'] = re.findall(r'<title><!\[CDATA\[(.*?)\]\]\></title>', item)[0]
+                    article['description'] = re.findall(r'<description><!\[CDATA\[(.*?)\]\]\></description>', item)[0]
+                    article['link'] = re.findall(r'<link>(.*?)</link>', item)[0]
+                    article['creator'] = re.findall(r'<dc:creator><!\[CDATA\[(.*?)\]\]\></dc:creator>', item)[0]
+                    article['date'] = re.findall(r'<pubDate>(.*?)</pubDate>', item)[0]
+                    article['url'] = url
+
+                    articles.append(article)
+                    # print '--->', article
+
+                     # for word in keywords:
+                     #     if word in article['title'].lower() or word in article['description'].lower() or word in article['link'].lower():
+                     #         if article not in articles:
+                     #         	articles.append(article)
+
             except Exception, e:
-                print str(e)
-        
-        except Exception,e:
-            print str(e), url
+                # print str(e)
+                pass
+
+        except Exception, e:
+            # print str(e), key
             pass
 
-main()
+    # print '###################################'
+    # print articles, len(articles)
+    articles_json = json.dumps(articles)
+    with open('../data/articles.json', 'w') as outfile:
+        json.dump(articles_json, outfile)
+
+
+
+if __name__ == "__main__":
+
+    main()
+
