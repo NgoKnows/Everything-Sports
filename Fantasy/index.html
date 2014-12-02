@@ -41,7 +41,7 @@
                     <td>{{player.name}}</td>
                     <td ng-mouseover="hoverOverCol()" ng-repeat="stat in player.stats track by $index">{{stat}}</td>
                     <td>
-                        <input type="checkbox">
+                        <input type="checkbox" ng-click="deletePlayer()">
                     </td>
                 </tr>
 
