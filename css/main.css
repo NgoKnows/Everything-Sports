@@ -61,6 +61,11 @@ nav ul li{
 .navbar-toggle{
 
 }
+#playersearch{
+    width:20%;
+    min-width: 150px;
+    margin-bottom: 0.5em;
+}
 
 @media screen and (max-width: 992px){
     #navbar{
