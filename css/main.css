@@ -1,10 +1,13 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans);
 
+
 textarea.form-control{
-    max-width: 85%;
-    background: #4F4F4F;
-    color: white;
+    max-width: 80%;
+    background: #C7C7C7;
+    color: black;
     padding-bottom: 0.5em;
+    opacity: 0.7;
+    font-size: 1em;
 }
 
 h1{
@@ -12,19 +15,31 @@ h1{
 }
 .table{
     width:90%;
+    resize: both;
 }
 body{
     padding-left: 2em;
-    background-color: #383838;
-    color: white;
+    background-image: url(../img/test.jpg);
+
+    opacity: 0.5;
+    background-size: 300%;
+    color: black;
      font-family: 'Open Sans', 'Helvetica Neue', 'Helvetica', sans-serif;
     font-weight: 400;
     font-size: 3em;
 }
 
-.hover{
-    background-color: #606060;
+main{
 }
+.navbar{
+    /*background-color: #4D4D4F;*/
+}
+
+
+.hover{
+    background-color: #C7C7C7;
+}
+
 
 input[type=checkbox]{
         margin-left: 1em;
@@ -33,5 +48,31 @@ input[type=checkbox]{
 h3 {
     font-size: 25px;
 }
+#esbrand{
+    margin-right: 2em;
+}
+#navbar{
+    padding-top: 0.5em;
+}
+
+nav ul li{
+    padding: 0.5em;
+}
+.navbar-toggle{
+
+}
+
+@media screen and (max-width: 992px){
+    #navbar{
+        display: none;
+    }
+    body{
+        font-size: 3em;
+    }
+    .table{
+        font-size: 0.5em;
+    }
     
+}
+
 
