@@ -28,18 +28,18 @@
     <section>
         <table class="table" id="teamtable">
             <colgroup></colgroup>
-            <colgroup ng-repeat="cat in statCats" ng-class="{ hover: curCol == $index}"></colgroup>
+            <colgroup ng-repeat="cat in statCats" ng-hide="isHidden(cat)" ng-class="{ hover: curCol == $index}"></colgroup>
             <thead>
                 <tr>
                     <th>Name</th>
-                    <th ng-repeat="cat in statCats" ng-click="sortBy(cat)">{{cat}}</th>
+                    <th ng-repeat="cat in statCats" ng-hide="isHidden(cat)" ng-click="sortBy(cat)">{{cat}}</th>
                     <th>Remove</th>
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="player in players" ng-class="{ hover: curRow == $index }" ng-mouseover="hoverOverRow()">
+                <tr ng-repeat="player in players |orderBy: getSortedValue: !sortReverse" ng-class="{ hover: curRow == $index }" ng-mouseover="hoverOverRow()">
                     <td>{{player.name}}</td>
-                    <td ng-mouseover="hoverOverCol()" ng-repeat="stat in player.stats track by $index">{{stat}}</td>
+                    <td ng-mouseover="hoverOverCol()" ng-repeat="stat in player.stats track by $index" ng-hide="hiddenStat($index)">{{stat}}</td>
                     <td>
                         <input type="checkbox" ng-click="deletePlayer()">
                     </td>
@@ -55,4 +55,5 @@
 
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.2/angular.min.js"></script>
+<script src="player.js"></script>
 <script src="app.js"></script>
