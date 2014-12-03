@@ -20,6 +20,7 @@ h1{
 body{
     padding-left: 2em;
     background-image: url(../img/test.jpg);
+    background-size: cover;
 
     opacity: 0.5;
     background-size: 300%;
