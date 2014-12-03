@@ -1,0 +1,36 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+
+h1 {
+    font-size: 50px;
+}
+
+body{
+    padding-left: 2em;
+    background-color: #383838;
+    color: black;
+    font-family: 'Open Sans', 'Helvetica Neue', 'Helvetica', sans-serif;
+    font-weight: 400;
+    font-size: 3em;
+}
+
+.hover {
+    background-color: #606060;
+}
+
+input[type=checkbox]{
+        margin-left: 1em;
+}
+
+.style {
+    font-size: 25px;
+    font-weight: 300;
+}
+    
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+    
+h3 {
+    font-size: 15px;
+}

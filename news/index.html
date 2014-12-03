@@ -3,29 +3,38 @@
 <html lang="en">
 	<head>
 		<title>Sports News</title>
-		<link rel="stylesheet" type='text/css' href="../css/main.css">
+		<link rel="stylesheet" type='text/css' href="css/main.css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 	</head>
 
 	<body>
-		<main class="container-fluid" ng-app="sports_news" ng-controller="ArticleController">	
+		<main class="container-fluid" ng-app="SportsNews" ng-controller="ArticleController">	
 			<header>
 				<h1>Everything Sports News</h1>
 			</header>
+			<h2>See latest stories: </h2>
+			<div class="filter-ui">
+				<input type="text" class="form-control" placeholder="Search..." ng-model="search">
+			</div>			
 
-			<h3 ng-click="click()">Latest stories:</h3>
+			<table>
+				<tr ng-repeat="article in articles">
+					<dt><h3 class="style">Title: {{article.title}}</h3></dt>
+					<dt>Publish Date: {{article.date}}</dt>
+					<dt>Summary: {{article.description}}</dt>
+					<dt>Full Article: <a href={{article.link}}>CLICK</a> to read more.</dt>
+					<dt>Author: {{article.creator}}</dt>
+				</tr>
+			</table>
 
-			<table class="table">
-				<tbody>
-					<tr ng-repeat="article in articles">
-						<td>{{article.title}}</td>
-						<td>{{article.date}}</td>
-						<td>{{article.description}}</td>
-						<td>{{article.link}}</td>
-						<td>{{article.creator}}</td>
-					</tr>
-				</tbody>
-			</table>	
+			<p ng-repeat="article in articles">  <!--  class="{{sort_articals(search)}}" -->
+				<h3 class="style">Title: {{article.title}}</h3>
+				<p>Publish Date: {{article.date}}<p>
+				<p>Summary: {{article.description}}</p>
+				<p>Full Article: <a href={{article.link}}>CLICK</a> to read more.</p>
+				<p>Author: {{article.creator}}</p>
+			</p>	
+			
 		</main>
 	</body>
 	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
