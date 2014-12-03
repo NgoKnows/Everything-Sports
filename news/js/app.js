@@ -5,33 +5,28 @@
 "use strict";
 
 angular.module('SportsNews', [])
-	.controller('ArticleController', function($scope) {
-        $scope.articles = get_articles();
-        console.log(articles[0]);
-        console.log('here');
-        
-        // $scope.sort_articals = function(searchString) {
-        //     var keywords = keyword_string.split(' ');
-        //     $scope.articals = find_articles(keywords, $scope);
-        // };
-		// console.log('here');
-	});
+    .controller('ArticlesController', function($scope, $http) {
+        $.get('../data/articles.json')
+            .done(function(data) {
+                data = JSON.parse(data);
+                $scope.articles = data;
+                console.log($scope.articles);
+            })
+    });
 
-function get_articles() {
-    var articles = [];
-    $.getJSON('../data/articles.json')
-        .done(function(data) {
-        	data = JSON.parse(data);
-            data.forEach(function(article) {
-            	article['hidden'] = false;
-                articles.push(article);
-                console.log(article);
-            });
-           // console.log(articles[2]);
-        });
-    return articles;
-    //return articles;
-}
+// function get_articles($scope) {
+//     var articles = [];
+//     $.get('../data/articles.json')
+//         .done(function(data) {
+//         	data = JSON.parse(data);
+//             data.forEach(function(article) {
+//             	article['hidden'] = false;
+//                 articles.push();
+//                 //console.log(articles[0]);
+//             });
+//             $scope.articles = data;
+//         });
+// }
 
 // function find_articles(keywords, $scope) {
 // 	$scope.articles.forEach(function(article) {
