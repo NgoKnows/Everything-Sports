@@ -4,11 +4,12 @@
 
 "use strict";
 
-angular.module('sports_news', [])
+angular.module('SportsNews', [])
 	.controller('ArticleController', function($scope) {
-		$scope.articals = get_articles();
+        $scope.articles = get_articles();
+        console.log(articles[0]);
         console.log('here');
-        console.log($scope.articles[0]);
+        
         // $scope.sort_articals = function(searchString) {
         //     var keywords = keyword_string.split(' ');
         //     $scope.articals = find_articles(keywords, $scope);
@@ -17,19 +18,19 @@ angular.module('sports_news', [])
 	});
 
 function get_articles() {
-	var articles = [];
+    var articles = [];
     $.getJSON('../data/articles.json')
         .done(function(data) {
         	data = JSON.parse(data);
             data.forEach(function(article) {
             	article['hidden'] = false;
                 articles.push(article);
-                // console.log(article);
+                console.log(article);
             });
-            return articles;
-           //console.log(articles[2]);
+           // console.log(articles[2]);
         });
-    
+    return articles;
+    //return articles;
 }
 
 // function find_articles(keywords, $scope) {
