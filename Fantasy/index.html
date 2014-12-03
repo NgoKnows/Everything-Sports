@@ -15,45 +15,70 @@
 </head>
 
 <body ng-app="FantasyTeam" ng-controller="TeamController">
-    <header>
+    <main class="cotainer-fluid">
+        <header class="navbar navbar-static-top">
+            <a class="navbar-brand" href="#">
+                <img id="esbrand" alt="everything sports brand" src="../img/temp%20(1).png">
+            </a>
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed glyphicon glyphicon-align-justify" data-toggle="collapse"> <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <nav class="navbar-collapse collapse" role="navigation">
+                        <ul id="navbar" class="nav navbar-nav">
+                            <li><a href="../news/index.html">News</a></li>
+                            <li><a href="index.html">Fantasy</a></li>
+                            <li><a href="index.html">About</a></li>
+                        </ul>
+
+                    </nav>
+                </div>
+            </div>
+        </header>
         <h1>Fantasy Module</h1>
-    </header>
 
-    <section id="teaminput">
-        <textarea class="form-control" rows="8" cols="2" type="text" name="comment" id="team" placeholder="Your team here!"></textarea>
-        <div class="form-group">
-            <button class="btn btn-default" ng-click="refreshPlayerList()" id="submit">Make My Team!</button>
-        </div>
-    </section>
-    <section>
-        <table class="table" id="teamtable">
-            <colgroup></colgroup>
-            <colgroup ng-repeat="cat in statCats" ng-hide="isHidden(cat)" ng-class="{ hover: curCol == $index}"></colgroup>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th ng-repeat="cat in statCats" ng-hide="isHidden(cat)" ng-click="sortBy(cat)">{{cat}}</th>
-                    <th>Remove</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="player in players |orderBy: getSortedValue: !sortReverse" ng-class="{ hover: curRow == $index }" ng-mouseover="hoverOverRow()">
-                    <td>{{player.name}}</td>
-                    <td ng-mouseover="hoverOverCol()" ng-repeat="stat in player.stats track by $index" ng-hide="hiddenStat($index)">{{stat}}</td>
-                    <td>
-                        <input type="checkbox" ng-click="deletePlayer()">
-                    </td>
-                </tr>
+        <section id="teaminput">
+            <textarea class="form-control" rows="8" cols="2" type="text" name="comment" id="team" placeholder="Your team here!"></textarea>
+            <div class="form-group">
+                <button class="btn btn-default" ng-click="refreshPlayerList()" id="submit">Make My Team!</button>
+            </div>
+        </section>
+        <section>
+            <table class="table" id="teamtable" ng-hide="empty()">
+                <colgroup></colgroup>
+                <colgroup ng-repeat="cat in statCats" ng-hide="isHidden(cat)" ng-class="{ hover: curCol == $index}"></colgroup>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th ng-repeat="cat in statCats" ng-hide="isHidden(cat)" ng-click="sortBy(cat)">{{cat}}</th>
+                        <th>Remove</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="player in players |orderBy: getSortedValue: !sortReverse" ng-class="{ hover: curRow == $index }" ng-mouseover="hoverOverRow()">
+                        <td>{{player.name}}</td>
+                        <td ng-mouseover="hoverOverCol()" ng-repeat="stat in player.stats track by $index" ng-hide="hiddenStat($index)">{{stat}}</td>
+                        <td>
+                            <input type="checkbox" ng-click="deletePlayer(player)">
+                        </td>
+                    </tr>
 
-            </tbody>
+                </tbody>
 
-        </table>
+            </table>
 
-    </section>
+        </section>
+    </main>
 
+
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js">
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.2/angular.min.js"></script>
+    <script src="player.js"></script>
+    <script src="app.js"></script>
 </body>
 
-<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.2/angular.min.js"></script>
-<script src="player.js"></script>
-<script src="app.js"></script>
+</html>
