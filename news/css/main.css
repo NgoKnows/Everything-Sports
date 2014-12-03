@@ -7,7 +7,7 @@ h1 {
 body{
     padding-left: 2em;
     background-color: #383838;
-    color: white;
+    color: black;
     font-family: 'Open Sans', 'Helvetica Neue', 'Helvetica', sans-serif;
     font-weight: 400;
     font-size: 3em;
@@ -26,11 +26,6 @@ input[type=checkbox]{
     font-weight: 300;
 }
     
-td {
-    text-align: left;
-}
-
-table, th, td {
-    border: 3px solid black;
-    border-color: lightgray;
+h3 {
+    font-size: 15px;
 }

@@ -3,7 +3,7 @@
 <html lang="en">
 	<head>
 		<title>Sports News</title>
-		<link rel="stylesheet" type='text/css' href="css/main.css" href="../css/main.css">
+		<link rel="stylesheet" type='text/css' href="css/main.css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 	</head>
 
@@ -12,22 +12,19 @@
 			<header>
 				<h1>Everything Sports News</h1>
 			</header>
+				<h2>See latest stories: </h2>
+				<div class="filter-ui">
+					<input type="text" class="form-control" placeholder="Search..." ng-model="search">
+				</div>			
 
-			<h2 ng-click="click()">See latest stories: </h2>
-
-			<table class="table">
-				<div class="table_style"> 
-					<tbody>
-						<tr ng-repeat="article in articles">
-							<td><h3 class="style">Title: {{article.title}}</h3></td>
-							<td>Publish Date: {{article.date}}</td>
-							<td>Summary: {{article.description}}</td>
-							<td>Full Article: <a href={{article.link}}>CLICK</a> to read more.</td>
-							<td>Author: {{article.creator}}</td>
-						</tr>
-					</tbody>
-				</div>
-			</table>	
+			<dl ng-repeat="article in articles">  <!--  class="{{sort_articals(search)}}" -->
+				<dt><h3 class="style">Title: {{article.title}}</h3></dt>
+				<dd><p>Publish Date: {{article.date}}<p>
+					<p>Summary: {{article.description}}</p>
+					<p>Full Article: <a href={{article.link}}>CLICK</a> to read more.</p>
+					<p>Author: {{article.creator}}</p></dd>
+				</dt>
+			</dl>	
 		</main>
 	</body>
 	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
