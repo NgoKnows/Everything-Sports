@@ -67,3 +67,15 @@ function getPlayerList(playersOnTeam) {
     })
     return playerList1;
 }
+
+function getDataList() {
+    var playerDataList = [];
+    $.getJSON('../data/data.json')
+        .done(function (data) {
+            data.forEach(function (player) {
+                playerDataList.push(player.name);
+            })
+        });
+    console.log(playerDataList);
+    return playerDataList;
+}
