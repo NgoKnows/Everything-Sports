@@ -35,8 +35,11 @@ angular.module('FantasyTeam', [])
         $scope.hoverOverRow = function () {
             $scope.curRow = this.$index;
         }
-        $scope.deletePlayer = function () {
-            playerList.splice(this.$index, this.$index + 1);
+        $scope.deletePlayer = function (player) {
+            console.log(player);
+            var indexOfPlayer = $.inArray(player, playerList)
+            playerList.splice(indexOfPlayer, 1);
+
             $scope.players = playerList;
         }
         $scope.getSortedValue = function (player) {
@@ -60,21 +63,28 @@ angular.module('FantasyTeam', [])
         $scope.isHidden = function (cat) {
             var indexOfCat = $.inArray(cat, $scope.hiddenCats);
             if (indexOfCat != -1) {
-                console.log(true);
                 return true;
             } else {
-                console.log(false);
                 return false;
             }
 
         }
-        $scope.hiddenStat = function(index){
+        $scope.hiddenStat = function (index) {
             var cat = $scope.statCats[index];
-            if($.inArray(cat, $scope.hiddenCats) != -1){
+            if ($.inArray(cat, $scope.hiddenCats) != -1) {
                 return true;
-            }else{
+            } else {
                 return false;
             }
+        }
+        $scope.empty = function () {
+            //console.log($scope.players);
+            if ($scope.players == undefined ||$scope.players.length == 0) {
+                return true;
+            }
+            return false;
+
         };
+
 
     });
