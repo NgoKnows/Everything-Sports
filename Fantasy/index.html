@@ -29,21 +29,32 @@
                     </button>
                     <nav class="navbar-collapse collapse" role="navigation">
                         <ul id="navbar" class="nav navbar-nav">
-                            <li><a href="../news/index.html">News</a></li>
-                            <li><a href="index.html">Fantasy</a></li>
-                            <li><a href="index.html">About</a></li>
+                            <li><a href="../news/index.html">News</a>
+                            </li>
+                            <li><a href="index.html">Fantasy</a>
+                            </li>
+                            <li><a href="index.html">About</a>
+                            </li>
                         </ul>
 
                     </nav>
                 </div>
             </div>
         </header>
-        <h1>Fantasy Module</h1>
 
         <section id="teaminput">
+            <h1>Fantasy Module</h1>
+             <form class="navbar-form" role="search">
+            <input type="text" id="playersearch" class="form-control" list="playerlist" ng-click="search()" placeholder="LeBron James">
+            <datalist id="playerlist">
+                <option ng-repeat="playerName in dataListPlayers">{{playerName}}</option>
+            </datalist>
+                  <button type="submit" class="btn btn-default">Add player!</button>
+            </form>
             <textarea class="form-control" rows="8" cols="2" type="text" name="comment" id="team" placeholder="Your team here!"></textarea>
             <div class="form-group">
                 <button class="btn btn-default" ng-click="refreshPlayerList()" id="submit">Make My Team!</button>
+                <button class="btn btn-default" ng-click="clearTeam()" id="submit">Clear Team!</button>
             </div>
         </section>
         <section>
