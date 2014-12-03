@@ -5,12 +5,13 @@
 */
 var playerDict = getPlayerDict();
 var playerList;
+var dataListPlayers = getDataList();
 
 angular.module('FantasyTeam', [])
     .controller('TeamController', function ($scope) {
         $scope.players = playerList;
         $scope.sortCat = 'POS';
-
+        $scope.dataListPlayers = getDataList();
         $scope.statCats = ["POS", "G", "GS", "MP", "FG", "FGA", "FG%", "3P", "3PA", "3P%", "2P", "2PA",
                      "2P%", "FT", "FTA", "FT%", "ORB", "DRB", "TRB", "AST", "STL",
                      "BLK", "TOV", "PF", "PTS"];
@@ -35,11 +36,26 @@ angular.module('FantasyTeam', [])
         $scope.hoverOverRow = function () {
             $scope.curRow = this.$index;
         }
+        $scope.search = function(){
+            if($scope.dataListPlayers == undefined){
+                $scope.dataListPlayers == dataListPlayers;
+            }
+            console.log('hi');
+        }
+        $scope.addPlayer = function(){
+            console.log(this);
+        }
         $scope.deletePlayer = function (player) {
             console.log(player);
             var indexOfPlayer = $.inArray(player, playerList)
             playerList.splice(indexOfPlayer, 1);
 
+            $scope.players = playerList;
+        }
+        $scope.clearTeam = function(){
+            console.log(dataListPlayers);
+            console.log($scope.dataListPlayers);
+            playerList = [];
             $scope.players = playerList;
         }
         $scope.getSortedValue = function (player) {
