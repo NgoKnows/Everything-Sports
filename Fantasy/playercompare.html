@@ -57,10 +57,27 @@
                 <datalist id="playerlist">
                     <option ng-repeat="playerName in dataListPlayers">{{playerName}}</option>
                 </datalist>
-                <button ng-click="addPlayer()" type="submit" class="btn btn-custom">Compare player!</button>
+                <button ng-click="addPlayer()" type="submit" class="btn btn-custom">Add Player!</button>
+                <button ng-hide="empty()" ng-click="createGraph()" type="submit" class="btn btn-custom">Compare players!</button>
+                <div class="dropdown">
+                    <button class="btn btn-custom dropdown-toggle" type="button" id="dropdownMenu" data-toggle="dropdown" aria-expanded="true">Categories to Compare<span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+                        <li>
+                            <button class="btn btn-custom active" ng-click="setTrackedCats(0)">Field Goals and Free Throws</button>
+                        </li>
+                        <li>
+                            <button class="btn btn-custom" ng-click="setTrackedCats(1)">Rebounds, Assist, Points</button>
+                        </li>
+                        <li>
+                            <button class="btn btn-custom" ng-click="setTrackedCats(2)">Defensive Stats</button>
+                        </li>
+                    </ul>
+                </div>
+                <ul>
+                    <li ng-repeat="player in players" ng-click="deletePlayer(player)">{{player.name}}</li>
+                </ul>
         </section>
-        <section ng-click="createGraph()">
-            fasdfasdfsd
         </section>
         <section class="container-fluid" id="graph"></section>
 
