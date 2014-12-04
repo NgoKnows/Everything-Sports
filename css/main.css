@@ -86,6 +86,17 @@ nav ul li {
 #navbutton {
     position: relative;
 }
+.homepage{
+    display: inline-block;
+    background-color: black;
+    margin-right: 0.5em;
+    opacity: 0.5;
+    height: 16em;
+    font: black;
+}
+.homepagesections{
+    margin-top: 8em;
+    position: relative;
 #graph {
     resize: both;
 }
