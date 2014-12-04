@@ -46,6 +46,7 @@ def main():
                     article['creator'] = re.findall(r'<dc:creator><!\[CDATA\[(.*?)\]\]\></dc:creator>', item)[0]
                     article['date'] = re.findall(r'<pubDate>(.*?)</pubDate>', item)[0]
                     article['url'] = url
+                    article['visible'] = True
 
                     articles.append(article)
                     # print '--->', article
@@ -65,9 +66,9 @@ def main():
 
     # print '###################################'
     # print articles, len(articles)
-    articles_json = json.dumps(articles)
+    # articles_json = json.dumps(articles)
     with open('../data/articles.json', 'w') as outfile:
-        json.dump(articles_json, outfile)
+        json.dump(articles, outfile)
 
 
 

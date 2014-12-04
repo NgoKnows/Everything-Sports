@@ -6,40 +6,18 @@
 
 angular.module('SportsNews', [])
     .controller('ArticlesController', function($scope, $http) {
-        $.getJSON('../data/articles.json')
-	        .done(function(data) {
-	            $scope.articles = JSON.parse(data);
-	            console.log($scope.articles.length)
-	            console.log($scope.articles);
-	        });
+        $http.get('../data/articles.json')
+       		.success(function(articles) {                
+           		$scope.articles = articles;
+        });
+       	$scope.search_string = 'espn';
+    	$scope.filter_by = function(search_string) {
+    		$scope.search_string = search_string.split(' ');
+    		console.log($scope.search_string);
+			$scope.search_string.forEach(function(word) {
+				$scope.articles.forEach(function(article) {
+					return (article.title.indexOf(word) > -1 || article.description.indexOf(word) > -1 || article.link.indexOf(word) > -1);
+				})
+			});
+    	};
     });
-
-// function get_articles($scope) {
-//     var articles = [];
-//     $.get('../data/articles.json')
-//         .done(function(data) {
-//         	data = JSON.parse(data);
-//             data.forEach(function(article) {
-//             	article['hidden'] = false;
-//                 articles.push();
-//                 //console.log(articles[0]);
-//             });
-//             $scope.articles = data;
-//         });
-// }
-
-// function find_articles(keywords, $scope) {
-// 	$scope.articles.forEach(function(article) {
-// 		keywords.forEach(function(search_word) {
-// 			if (search_word in article['title'] || search_word in article['description'] || search_word in article['link'] || search_word in article['url']) {
-// 				article['hidden'] = false;
-// 				console.log('contains keyword, unhidden');
-// 			}
-//             else {
-//                 article['hidden'] = true;
-//             }
-// 		})
-// 	});
-// 	// console.log(articles);
-// 	return articles;
-// }

@@ -6,13 +6,21 @@ h1 {
     font-weight: 700;
 }
 
-body{
+body {
     margin-left: 15%;
     background-color: #FFFFFF;
     color: white;
     font-family: 'Open Sans', 'Helvetica Neue', 'Helvetica', sans-serif;
     font-weight: 300;
     font-size: 15px;
+}
+
+.filter {
+    
+}
+
+.main {
+
 }
 
 .hover {
@@ -22,13 +30,4 @@ body{
 .style {
     font-size: 30px;
     font-weight: 500;
-}
-    
-td {
-    text-align: left;
-}
-
-table, th, td {
-    border: 3px solid black;
-    border-color: lightgray;
 }
