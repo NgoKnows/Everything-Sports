@@ -18,7 +18,7 @@ angular.module('SportsNews', [])
                     words = search_string.toLowerCase().split(' ');
                 }
                 else {
-                    words = ['espn'];
+                    words = [''];
                 }
                 var visible = false;
                 console.log(words);
