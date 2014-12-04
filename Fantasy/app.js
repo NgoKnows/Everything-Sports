@@ -9,13 +9,14 @@ var dataListPlayers = getDataList();
 
 angular.module('FantasyTeam', [])
     .controller('TeamController', function ($scope) {
-        $scope.players = playerList;
+        $scope.players = [];
         $scope.sortCat = 'POS';
+        $scope.totals = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
         $scope.dataListPlayers = getDataList();
         $scope.statCats = ["POS", "G", "GS", "MP", "FG", "FGA", "FG%", "3P", "3PA", "3P%", "2P", "2PA",
                      "2P%", "FT", "FTA", "FT%", "ORB", "DRB", "TRB", "AST", "STL",
                      "BLK", "TOV", "PF", "PTS"];
-        $scope.hiddenCats = ["2P", "2PA", "3P", "3PA"];
+        $scope.hiddenCats = ["2P", "2PA", "3P", "3PA", "3P%"];
         $scope.refreshPlayerList = function () {
             getTeam();
             $scope.players = playerList;
@@ -36,14 +37,26 @@ angular.module('FantasyTeam', [])
         $scope.hoverOverRow = function () {
             $scope.curRow = this.$index;
         }
-        $scope.search = function(){
-            if($scope.dataListPlayers == undefined){
+        $scope.search = function () {
+            if ($scope.dataListPlayers == undefined) {
                 $scope.dataListPlayers == dataListPlayers;
             }
             console.log('hi');
         }
-        $scope.addPlayer = function(){
-            console.log(this);
+        $scope.addPlayer = function () {
+            var player = [$("#playersearch").val()];
+            var newPlayer = getPlayerList(player);
+            if ($.inArray(player, playerList) == -1) {
+                console.log('here');
+                $scope.players.push(newPlayer[0]);
+            }
+        }
+        $scope.getTotal = function (stat, index) {
+            console.log(stat);
+            if ($.inArray(stat, ["PG", "SG", "SF", "PF", "C"] == -1)) {
+                $scope.totals[index] += parseFloat(stat);
+            }
+            return stat;
         }
         $scope.deletePlayer = function (player) {
             console.log(player);
@@ -52,7 +65,7 @@ angular.module('FantasyTeam', [])
 
             $scope.players = playerList;
         }
-        $scope.clearTeam = function(){
+        $scope.clearTeam = function () {
             console.log(dataListPlayers);
             console.log($scope.dataListPlayers);
             playerList = [];
@@ -71,12 +84,22 @@ angular.module('FantasyTeam', [])
         $scope.toggleHide = function (cat) {
             var indexOfCat = $.inArray(cat, $scope.hiddenCats);
             if (indexOfCat != -1) {
-                $scope.hiddenCats.splice(indexOfCat, indexOfCat + 1);
+                $scope.hiddenCats.splice(indexOfCat, 1);
             } else {
                 $scope.hiddenCats.push(cat);
             }
         }
         $scope.isHidden = function (cat) {
+            var indexOfCat = $.inArray(cat, $scope.hiddenCats);
+            if (indexOfCat != -1) {
+                return true;
+            } else {
+                return false;
+            }
+
+        }
+        $scope.isHiddenTotal = function (index) {
+            var cat = $scope.statCats[index+1];
             var indexOfCat = $.inArray(cat, $scope.hiddenCats);
             if (indexOfCat != -1) {
                 return true;
@@ -95,7 +118,7 @@ angular.module('FantasyTeam', [])
         }
         $scope.empty = function () {
             //console.log($scope.players);
-            if ($scope.players == undefined ||$scope.players.length == 0) {
+            if ($scope.players == undefined || $scope.players.length == 0) {
                 return true;
             }
             return false;
