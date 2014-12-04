@@ -18,12 +18,13 @@
 				<div class="filter">
                     <input type="text" class="form-control" placeholder="Enter search keywords..." ng-model="search_string"></input>
                 </div>
-                <!-- <div class="btn-group">
+                <p>separate terms by a space</p>
+                <div class="btn-group">
                 	<button type="button" id="refresh" class="btn btn-default" ng-click="filtered = search_string">Apply Search Terms</button>
-                </div> -->
+                </div>
 				<div ng-repeat="article in articles">
-					<div ng-if="filter_by(article, search_string)">
-						<p><h3 class="style">Title: {{article.title}}</h3></p>
+					<div ng-if="filter_by(article, filtered)">
+						<p><h2 class="style">{{article.title}}</h2></p>
 						<p>Publish Date: {{article.date}}</p>
 						<p>Summary: {{article.description}}</p>
 						<p>Full Article: <a href="{{article.link}}">CLICK</a> to read more.</p>
