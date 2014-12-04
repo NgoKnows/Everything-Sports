@@ -1,33 +1,109 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans);
 
-h1 {
-    font-size: 100px;
-    color: white;
-    font-weight: 700;
+
+textarea.form-control{
+    max-width: 80%;
+    background: #C7C7C7;
+    color: black;
+    padding-bottom: 0.5em;
+    opacity: 0.7;
+    font-size: 0.5em;
 }
 
-body {
-    margin-left: 15%;
-    background-color: #FFFFFF;
-    color: white;
-    font-family: 'Open Sans', 'Helvetica Neue', 'Helvetica', sans-serif;
-    font-weight: 300;
-    font-size: 15px;
+h1{
+    font-size: 50px;
+}
+.table{
+    width: 10%;
+    font-size: 0.5em;
+
+}
+body{
+    padding-left: 2em;
+    background-image: url(../../img/test.jpg);
+    opacity: 0.5;
+    background-attachment: fixed;
+    color: black;
+     font-family: 'Open Sans', 'Helvetica Neue', 'Helvetica', sans-serif;
+    font-weight: 400;
+    font-size: 3em;
 }
 
-.filter {
+main{
+}
+
+.hover{
+    background-color: #C7C7C7;
+}
+
+
+input[type=checkbox]{
+        margin-left: 1.5em;
+}
+
+h3 {
+    font-size: 25px;
+}
+#esbrand{
+    margin-right: 0em;
+}
+#navbar{
+    display: none;
+    position: relative;
+
+}
+#keywordsearch{
+    width: 50%;
+
+}
+
+nav ul li{
+    padding: 0.5em;
+    padding-bottom: 0.4em;
+    padding-top: 1em
+    padding-left: 0em;
+    padding-right: 0em;
+
+}
+.navbar-toggle{
+
+}
+li ul li{
+    font-size: 1.5em;
     
 }
+<!-- -->
+#playersearch{
+    width:20%;
+    min-width: 150px;
+    margin-bottom: 0.5em;
+}
+#navbutton{
+    position: relative;
+}
 
-.main {
+@media screen and (min-width: 768px){
+    #navbar{
+        display: block;
+        position: absolute;
+        right: 1em;
+        top: -0.5em;
+}
+
+@media screen and (min-width: 992px){
+    #navbar{
+        right: 0em;
+    }
+    nav ul li{
+        padding: 1em;
+    }
+    body{
+        font-size: 3em;
+    }
+    .table{
+        font-size: 1em;
+    }
 
 }
 
-.hover {
-    background-color: #606060;
-}
 
-.style {
-    font-size: 30px;
-    font-weight: 500;
-}
