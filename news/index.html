@@ -14,7 +14,7 @@
                 <img id="esbrand" alt="everything sports brand" src="../img/temp%20(1).png">
             </a>
                 <div class="navbar-header">
-                    <button id="navbutton" type="button" class="navbar-toggle collapsed glyphicon glyphicon-align-justify" data-toggle="collapse" ng-click="addPlayer()"> <span class="sr-only">Toggle navigation</span>
+                    <button id="navbutton" type="button" class="navbar-toggle collapsed glyphicon glyphicon-align-justify" data-toggle="collapse"> <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
@@ -33,31 +33,45 @@
                             <li role="presentation"><a href="index.html">About</a>
                             </li>
                         </ul>
-
                     </nav>
-            </div>
-        </header>
+            	</div>
+        	</header>
 
 			<section>
+				<h1>News</h1>
 				<h2>See latest stories: </h2>
-				<div class="filter">
-                    <input type="text" class="form-control" placeholder="Enter search keywords..." ng-model="search_string"></input>
-                </div>
-                <p>separate terms by a space</p>
-                <div class="btn-group">
-                	<button type="button" id="refresh" class="btn btn-default" ng-click="filtered = search_string">Apply Search Terms</button>
-                </div>
-				<div ng-repeat="article in articles">
-					<div ng-if="filter_by(article, filtered)">
-						<p><h2 class="style">{{article.title}}</h2></p>
-						<p>{{article.date}}</p>
-						<p>Summary: {{article.description}}</p>
-						<p>Full Article: <a href="{{article.link}}">CLICK</a> to read more.</p>
-						<p>Author: {{article.creator}}</p>	
+				
+				<section>
+					<div class="dark">
+						<form>
+							<span><input type="text" class="search square" placeholder="Enter search keywords..." ng-model="search_string">
+							    <div class="btn-group">
+				                	<button type="button" id="refresh" class="btn btn-custom" ng-click="filtered = search_string">Apply Search Terms</button>
+				                </div>
+	            			</span>
+	            			<p style="font-size: 17px; margin-bottom: 5px"><br>separate terms by a space</p>
+						</form>
+					</div>
+
+	                
+
+	        </section>
+
+			<section class="menu" id="menu">
+				<div class="row" id="teamtable" ng-hide="empty()" ng-repeat="article in articles">
+					<div class="col-md-11" ng-if="filter_by(article, filtered)">
+						<dl>
+							<dt class="title_style">-{{article.title}}-</dt>
+							<dd class="title_date">{{article.date}}</dd>
+							<dd class="title_description"><span class="fla">Summary: </span> {{article.description}}</dd>
+							<dd class="title_link">Author: {{article.creator}} | Full Article: <a style="lfs" href="{{article.link}}">CLICK</a> to read more.</dd>
+						</dl>
+						<hr></hr>
 					</div>
 				</div>
-			</section>
-		</main>
+			</section>	
+
+	    </main>
 	</body>
 	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.2/angular.min.js"></script>

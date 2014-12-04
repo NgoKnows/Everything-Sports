@@ -11,24 +11,33 @@ angular.module('SportsNews', [])
                 $scope.articles = articles;
                 console.log('first');
             });
-            $scope.filter_by = function(article, search_string) {
-                console.log('here');
-                var words = search_string.toLowerCase().split(' ');
-                var visible = true;
-                var same_article = true;
-                console.log(words);
-                words.forEach(function(word) {
-                    if (article.title.toLowerCase().indexOf(word) > -1 || article.description.toLowerCase().indexOf(word) > -1 || article.link.toLowerCase().indexOf(word) > -1) {
-                        visible = true;
-                        same_article = false;
+            try {
+                $scope.filter_by = function(article, search_string) {
+                    console.log('here');
+                    var words;
+                    if (search_string) {
+                        words = search_string.toLowerCase().split(' ');
                     }
                     else {
-                        visible = false;
+                        words = ['espn'];
                     }
-                });
-                return visible; // (words.indexOf(article.title.toLowerCase()) > -1)
-            };
-        
+                    var visible = false;
+                    console.log(words);
+                    words.forEach(function(word) {
+                        if (article.title.toLowerCase().indexOf(word) > -1 || article.description.toLowerCase().indexOf(word) > -1 || article.link.toLowerCase().indexOf(word) > -1) {
+                            visible = true;
+                        }
+                        else {
+                            visible = false;
+                        }
+                        return visible;
+                    });
+                    return visible; // (words.indexOf(article.title.toLowerCase()) > -1)
+                };
+            } 
+            catch (err) {
+                console.log(err);
+            }
     });
 
 
