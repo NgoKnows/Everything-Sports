@@ -74,8 +74,9 @@
                         </li>
                     </ul>
                 </div>
+                <h2 ng-hide="empty()">Players To Be Compared:</h2>
                 <ul>
-                    <li ng-repeat="player in players" ng-click="deletePlayer(player)">{{player.name}}</li>
+                    <li id="comparedplayers" ng-repeat="player in players" ng-click="deletePlayer(player)">{{player.name }} </li>
                 </ul>
         </section>
         </section>
