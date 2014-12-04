@@ -2,10 +2,26 @@
 
 .dark input[type=text] {
     border:1px solid #2a2e31;
-    background-color:#2d3035;
-    color: #949494;
+    background-color:lightgray;
+    color: black;
     opacity: .6;
     height:45px;
+}
+
+::-webkit-input-placeholder {
+   color: black;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: black;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: black;  
+}
+
+:-ms-input-placeholder {  
+   color: black;  
 }
 
 .btn-custom {
