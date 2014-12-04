@@ -188,11 +188,13 @@ angular.module('Fantasy', [])
         }
         $scope.setTrackedCats = function (num) {
             if (num == 0) {
-                $scope.trackedCats = ['FG', 'FGA', 'FG%'];
+                $scope.trackedCats = ['FG', 'FGA',"3P", "3PA", "FT", "FTA", "PTS"];
             } else if (num == 1) {
                 $scope.trackedCats = ['TRB', 'AST', 'PTS'];
-            } else {
+            } else if(num == 2){
                 $scope.trackedCats = ['BLK', 'STL'];
+            }else{
+                $scope.trackedCats = ["FG%", "2P%", "3P%", "FT%"];
             }
 
         }
