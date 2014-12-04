@@ -16,11 +16,11 @@
 			<section>
 				<h2>See latest stories: </h2>
 				<div class="filter">
-                    <input type="text" class="form-control" placeholder="Enter search keywords..." ng-model="filter" ng-keyup="setSearch(filter)">
+                    <input type="text" class="form-control" placeholder="Enter search keywords..." ng-model="search_string" ng-keyup="setSearch(search_string)">
                 </div>
-                <div class="btn-group">
-                	<button type="button" id="refresh" class="btn btn-default" ng-click="filtered = search_string">Apply Search Terms</button>
-                </div>
+                <!-- <div class="btn-group">
+                	<button type="button" id="refresh" class="btn btn-default" ng-keyup="filtered = search_string">Apply Search Terms</button>
+                </div> -->
 
 				<div class="article_style" ng-repeat="article in articles | filter:filter_by(article)">
 					<p><h3 class="style">Title: {{article.title}}</h3></p>
