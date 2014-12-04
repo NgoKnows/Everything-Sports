@@ -3,38 +3,31 @@
 <html lang="en">
 	<head>
 		<title>Sports News</title>
-		<link rel="stylesheet" type='text/css' href="css/main.css">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+		<link rel="stylesheet" type='text/css' href="css/main.css"></link>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"></link>
 	</head>
 
 	<body>
-		<main class="container-fluid" ng-app="SportsNews" ng-controller="ArticleController">	
+		<main class="container" ng-app="SportsNews">	
 			<header>
 				<h1>Everything Sports News</h1>
 			</header>
-			<h2>See latest stories: </h2>
-			<div class="filter-ui">
-				<input type="text" class="form-control" placeholder="Search..." ng-model="search">
-			</div>			
 
-			<table>
-				<tr ng-repeat="article in articles">
-					<dt><h3 class="style">Title: {{article.title}}</h3></dt>
-					<dt>Publish Date: {{article.date}}</dt>
-					<dt>Summary: {{article.description}}</dt>
-					<dt>Full Article: <a href={{article.link}}>CLICK</a> to read more.</dt>
-					<dt>Author: {{article.creator}}</dt>
-				</tr>
-			</table>
-
-			<p ng-repeat="article in articles">  <!--  class="{{sort_articals(search)}}" -->
-				<h3 class="style">Title: {{article.title}}</h3>
-				<p>Publish Date: {{article.date}}<p>
-				<p>Summary: {{article.description}}</p>
-				<p>Full Article: <a href={{article.link}}>CLICK</a> to read more.</p>
-				<p>Author: {{article.creator}}</p>
-			</p>	
+			<section ng-controller="ArticlesController">
+				<h2>See latest stories: </h2>
 			
+				<table>
+					<thead>
+					</thead>
+					<tr ng-repeat="article in articles">
+						<dt><h3 class="style">Title: {{article.title}}</h3></dt>
+						<dt>Publish Date: {{article.date}}</dt>
+						<dt>Summary: {{article.description}}</dt>
+						<dt>Full Article: <a href="{{article.link}}">CLICK</a> to read more.</dt>
+						<dt>Author: {{article.creator}}</dt>
+					</tr>
+				</table>
+			</section>
 		</main>
 	</body>
 	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
