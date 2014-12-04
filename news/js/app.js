@@ -13,12 +13,14 @@ angular.module('SportsNews', [])
             });
             $scope.filter_by = function(article, search_string) {
                 console.log('here');
-                var words = search_string.split(' ');
+                var words = search_string.toLowerCase().split(' ');
                 var visible = true;
+                var same_article = true;
                 console.log(words);
                 words.forEach(function(word) {
                     if (article.title.toLowerCase().indexOf(word) > -1 || article.description.toLowerCase().indexOf(word) > -1 || article.link.toLowerCase().indexOf(word) > -1) {
                         visible = true;
+                        same_article = false;
                     }
                     else {
                         visible = false;

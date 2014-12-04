@@ -46,7 +46,6 @@ def main():
                     article['creator'] = re.findall(r'<dc:creator><!\[CDATA\[(.*?)\]\]\></dc:creator>', item)[0]
                     article['date'] = re.findall(r'<pubDate>(.*?)</pubDate>', item)[0]
                     article['url'] = url
-                    article['visible'] = True
 
                     articles.append(article)
                     # print '--->', article
