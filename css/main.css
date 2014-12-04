@@ -1,8 +1,6 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans);
-
-
-textarea.form-control{
-    max-width: 80%;
+ textarea.form-control {
+    max-width: 75%;
     background: #949494;
     color: black;
     padding-bottom: 0.5em;
@@ -10,116 +8,120 @@ textarea.form-control{
     font-size: 0.5em;
     border-color: #4F4F4F;
 }
-
-h1{
+h1 {
     font-size: 50px;
 }
-.table{
+.table {
     width: 10%;
     font-size: 0.5em;
-
+    margin-top: 0.5em;
 }
-body{
+body {
     padding-left: 2em;
     background-image: url(../img/test.jpg);
     opacity: 0.5;
     background-attachment: fixed;
     color: black;
-     font-family: 'Open Sans', 'Helvetica Neue', 'Helvetica', sans-serif;
+    font-family: 'Open Sans', 'Helvetica Neue', 'Helvetica', sans-serif;
     font-weight: 400;
     font-size: 3em;
 }
 .btn-custom {
-font-size: 0.7em;
-  color: black;
-  background-color: white;
-  border-color: #9C9C9C;
+    font-size: 0.5em;
+    color: black;
+    background-color: white;
+    border-color: #9C9C9C;
 }
-
-#teambuttons{
+#teambuttons {
     padding-top: 0.25em;
 }
-.hover{
+.dropdown ul{
+    min-width: 15.5em;
+}
+.hover {
     background-color: #C7C7C7;
 }
-
-
-input[type=checkbox]{
-        margin-left: 1.5em;
+#dropdownMenu {
+    display:
 }
-
+input[type=checkbox] {
+    margin-left: 1.5em;
+}
 h3 {
     font-size: 25px;
 }
-#esbrand{
-
+#esbrand {
     margin-right: 0em;
     margin-bottom: 0em;
     padding-bottom: 0;
     position: absolute;
     left: 0%;
     top: 0;
-
 }
-#navbar{
+#navbar {
     display: none;
     position: relative;
-
 }
-#keywordsearch{
+#keywordsearch {
     width: 50%;
 }
-
-nav ul li{
+nav ul li {
     padding: 0.5em;
     padding-bottom: 0.4em;
-    padding-top: 1em
-    padding-left: 0em;
+    padding-top: 1em padding-left: 0em;
     padding-right: 0em;
-
 }
-.navbar-toggle{
-
-}
-li ul li{
+.navbar-toggle {} li ul li {
     font-size: 1.5em;
-    
 }
-<!-- -->
-#playersearch{
-    width:20%;
+#playersearch {
+    width: 20%;
+    height: 2em;
     min-width: 205px;
     margin-bottom: 0.5em;
     margin-top: 1em;
+    font-size: 0.6em;
 }
 }
-#navbutton{
+#navbutton {
     position: relative;
 }
-
-@media screen and (min-width: 768px){
-    #navbar{
+#graph {
+    resize: both;
+}
+@media screen and (min-width: 768px) {
+    #navbar {
         display: block;
         position: absolute;
         right: 1em;
         top: -0.5em;
-}
-
-@media screen and (min-width: 992px){
-    #navbar{
-        right: 0em;
     }
-    nav ul li{
-        padding: 1em;
-    }
-    body{
-        font-size: 3em;
-        <!--background-size: 300%;-->
-    }
-    .table{
+    textarea.form-control{
         font-size: 1em;
     }
-
 }
-
-
+@media screen and (min-width: 992px) {
+    #playersearch {
+        font-size: 1em;
+    }
+    .btn-custom {
+        font-size: 1em;
+    }
+    #navbar {
+        right: 0em;
+    }
+    nav ul li {
+        padding: 1em;
+    }
+    body {
+        font-size: 2em;
+        <!--background-size: 300%;
+        -->
+    }
+    .table {
+        font-size: 1em;
+    }
+    textarea.form-control{
+        font-size: 1em;
+    }
+}
