@@ -98,10 +98,10 @@ nav {
 }
 
 .menu {
-    border-style: double;
+    border-style: solid;
     border-width: 1px 1px;
     border-color: black; 
-    margin-right: 0;
+    margin-right: 10%;
     color: #949494;
     font-style: bold;
     opacity: 1;
