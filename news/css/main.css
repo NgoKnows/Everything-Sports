@@ -1,10 +1,5 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans);
 
-
-.dark {
-    background: url('./images/dark_grey.jpg');
-}
-
 .dark input[type=text] {
     border:1px solid #2a2e31;
     background-color:#2d3035;
@@ -27,7 +22,7 @@
 }
 
 h1 {
-    font-size: 50px;
+    font-size: 35px;
 }
 
 body {
@@ -69,8 +64,9 @@ nav {
     padding-right: 0em;
 }
 
-.navbar-toggle {
-
+.demo{
+    margin-bottom: -99999px;
+    padding-bottom: 99999px;
 }
 
 #navbutton{
@@ -105,7 +101,7 @@ nav {
     border-style: double;
     border-width: 1px 1px;
     border-color: black; 
-    margin-right: 25%;
+    margin-right: 0;
     color: #949494;
     font-style: bold;
     opacity: 1;
@@ -125,19 +121,19 @@ nav {
     color: black;
     font-weight: 400;
     opacity: 1;
-    font-size: 50px;
+    font-size: 35px;
     padding-left: 1%;
 }
 
 .title_description {
     margin-right: 0em;
     border-width: 1px 1px;
-    font-size: 25px;
+    font-size: 17px;
     font-style: normal; 
 }
 
 .fla, .lfs {
-    font-size: 27px;
+    font-size: 20px;
     color: #4F4F4F;
     font-style: italic;
 }
@@ -150,7 +146,13 @@ nav {
     font-size: 15px;
     color: #4F4F4F;
     font-style: normal;
-    margin-left: 40%;
+    margin-left: 15%;
+}
+
+.demo{
+    margin-bottom: -99999px;
+    padding-bottom: 99999px;
+    background-color:#efefef;
 }
 
 dt {
@@ -174,4 +176,10 @@ dd {
     font-style: italic;
     margin-left: 1em;
     margin-bottom: 1em;
+}
+
+dl {
+    max-height: 320px;
+    min-height: 280px;
+    overflow: hidden;
 }

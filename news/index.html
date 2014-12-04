@@ -4,7 +4,7 @@
 	<head>
 		<title>Sports News</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"></link>
-    <link rel="stylesheet" type='text/css' href="../css/css/main.css"></link>
+    <link rel="stylesheet" type='text/css' href="../css/main.css"></link>
 		<link rel="stylesheet" type='text/css' href="css/main.css"></link>
 	</head>
 
@@ -23,7 +23,7 @@
 
                     <nav class="navbar-collapse collapse" role="navigation">
                          <ul id="navbar" class="nav nav-tabs">
-                            <li role="presentation" class="active"><a href="../Fantasy/index.html">News</a>
+                            <li role="presentation" class="active"><a href="#" onClick="window.location.reload();return false">News</a>
                             </li>
                             <li role="presentation" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">Fantasy<span class="caret"></span></a>
                                 <ul class="dropdown-menu" role="menu">
@@ -59,15 +59,14 @@
 	        </section>
 
 			<section class="menu" id="menu">
-				<div class="row" id="articles" ng-hide="empty()" ng-repeat="article in articles">
-					<div class="col-md-11" ng-if="filter_by(article, filtered)">
+				<div class="row row-md-height" id="articles">
+					<div class="col-md-6" ng-repeat="article in articles" ng-if="filter_by(article, filtered)">
 						<dl>
 							<dt class="title_style">-{{article.title}}-</dt>
 							<dd class="title_date">{{article.date}}</dd>
 							<dd class="title_description"><span class="fla">Summary: </span> {{article.description}}</dd>
 							<dd class="title_link">Author: {{article.creator}} | Full Article: <a style="lfs" href="{{article.link}}">CLICK</a> to read more.</dd>
 						</dl>
-						<hr></hr>
 					</div>
 				</div>
 			</section>	
