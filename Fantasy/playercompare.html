@@ -14,7 +14,7 @@
 
 </head>
 
-<body ng-app="FantasyTeam" ng-controller="TeamController">
+<body ng-app="Fantasy" ng-controller="CompareController">
     <main class="container-fluid">
         <header class="navbar navbar-static-top">
             <a class="navbar-brand">
@@ -46,12 +46,29 @@
                 </nav>
             </div>
         </header>
+        <section>
+            <h1>Fantasy Module</h1>
+            <h2>PlayerComparison</h2>
+        </section>
 
-        </header>
+        <section>
+            <form class="navbar-form" role="search">
+                <input type="text" id="playersearch" class="form-control" list="playerlist" ng-click="search()" placeholder="LeBron James">
+                <datalist id="playerlist">
+                    <option ng-repeat="playerName in dataListPlayers">{{playerName}}</option>
+                </datalist>
+                <button ng-click="addPlayer()" type="submit" class="btn btn-custom">Compare player!</button>
+        </section>
+        <section ng-click="createGraph()">
+            fasdfasdfsd
+        </section>
+        <section id="graph"></section>
+
     </main>
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.2/angular.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
     <script src="player.js"></script>
     <script src="app.js"></script>
 </body>

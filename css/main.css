@@ -3,11 +3,12 @@
 
 textarea.form-control{
     max-width: 80%;
-    background: #C7C7C7;
+    background: #949494;
     color: black;
     padding-bottom: 0.5em;
     opacity: 0.7;
     font-size: 0.5em;
+    border-color: #4F4F4F;
 }
 
 h1{
@@ -28,10 +29,16 @@ body{
     font-weight: 400;
     font-size: 3em;
 }
-
-main{
+.btn-custom {
+font-size: 0.7em;
+  color: black;
+  background-color: white;
+  border-color: #9C9C9C;
 }
 
+#teambuttons{
+    padding-top: 0.25em;
+}
 .hover{
     background-color: #C7C7C7;
 }
@@ -45,7 +52,14 @@ h3 {
     font-size: 25px;
 }
 #esbrand{
+
     margin-right: 0em;
+    margin-bottom: 0em;
+    padding-bottom: 0;
+    position: absolute;
+    left: 0%;
+    top: 0;
+
 }
 #navbar{
     display: none;
@@ -54,7 +68,6 @@ h3 {
 }
 #keywordsearch{
     width: 50%;
-
 }
 
 nav ul li{
@@ -75,8 +88,10 @@ li ul li{
 <!-- -->
 #playersearch{
     width:20%;
-    min-width: 150px;
+    min-width: 205px;
     margin-bottom: 0.5em;
+    margin-top: 1em;
+}
 }
 #navbutton{
     position: relative;
