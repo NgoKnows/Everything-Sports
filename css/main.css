@@ -52,6 +52,10 @@ h3 {
     position: relative;
 
 }
+#keywordsearch{
+    width: 50%;
+
+}
 
 nav ul li{
     padding: 0.5em;
