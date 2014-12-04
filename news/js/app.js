@@ -7,18 +7,24 @@
 angular.module('SportsNews', [])
     .controller('ArticlesController', function($scope, $http) {
         $http.get('../data/articles.json')
-            .success(function (articles) {
+            .success(function(articles) {
                 $scope.articles = articles;
+                console.log('first');
             });
-        $scope.filters = "";
-        $scope.search_string = [];
-        $scope.setSearch = function(search_string) {
-            $scope.search_string = search_string.split(' ');
-        };
+            $scope.filter_by = function(article, search_string) {
+                console.log('here');
+                var words = search_string.split(' ');
+                var visible = true;
+                console.log(words);
+                words.forEach(function(term) {
+                    if (article.title.toLowerCase().indexOf(term) > -1) {
 
-        $scope.filter_by = function() {
-            $scope.search_string.forEach(function(word) {
-                return (article.title.toLowerCase().indexOf(word) > -1 || article.description.toLowerCase().indexOf(word) > -1 || article.link.toLowerCase().indexOf(word) > -1);
-            });
-        };
+                    }
+                    else {
+                        visible = false;
+                    }
+                });
+                return visible; // (words.indexOf(article.title.toLowerCase()) > -1)
+            };
+        
     });
