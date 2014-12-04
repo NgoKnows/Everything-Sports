@@ -144,6 +144,18 @@ angular.module('Fantasy', [])
                 $scope.dataListPlayers == dataListPlayers;
             }
         }
+        $scope.empty = function () {
+            if ($scope.players == undefined || $scope.players.length == 0) {
+                return true;
+            }
+            return false;
+
+        }
+        $scope.deletePlayer = function (player) {
+            console.log(player);
+            var indexOfPlayer = $.inArray(player, playerList)
+            $scope.players.splice(indexOfPlayer, 1);
+        }
         $scope.getFormattedPlayers = function () {
             var data = []
             $scope.players.forEach(function (player) {
@@ -166,13 +178,23 @@ angular.module('Fantasy', [])
             });
             return data;
         }
-        $scope.getComparedPlayers = function(){
+        $scope.getComparedPlayers = function () {
             var playerString = "";
-            $scope.players.forEach(function(player){
-                playerString+=player.name;
-                playerString+= " vs. ";
+            $scope.players.forEach(function (player) {
+                playerString += player.name;
+                playerString += " vs. ";
             })
             return playerString.substring(0, playerString.length - 5);
+        }
+        $scope.setTrackedCats = function (num) {
+            if (num == 0) {
+                $scope.trackedCats = ['FG', 'FGA', 'FG%'];
+            } else if (num == 1) {
+                $scope.trackedCats = ['TRB', 'AST', 'PTS'];
+            } else {
+                $scope.trackedCats = ['BLK', 'STL'];
+            }
+
         }
 
 
@@ -239,8 +261,10 @@ angular.module('Fantasy', [])
                 .style("text-anchor", "end");
 
             svg.append("text")
-                .attr("x", (width/2) - $scope.players.length * (width/5))
+                .attr("x", (width / 2) - $scope.players.length * (width / 10))
                 .attr("y", 0 - (margin.top / 2))
+                .style("font-size", "16px")
+                .style("text-decoration", "underline")
                 .text($scope.getComparedPlayers());
 
             var players = svg.selectAll(".name")
@@ -285,7 +309,7 @@ angular.module('Fantasy', [])
                 .style("fill", color);
 
             legend.append("text")
-                .attr("x", width - 24)
+                .attr("x", width - 28)
                 .attr("y", 9)
                 .attr("dy", ".35em")
                 .style("text-anchor", "end")
