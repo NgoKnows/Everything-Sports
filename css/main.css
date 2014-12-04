@@ -27,7 +27,7 @@ body {
     font-size: 3em;
 }
 .btn-custom {
-    font-size: 0.5em;
+    font-size: 0.75em;
     color: black;
     background-color: white;
     border-color: #9C9C9C;
@@ -90,6 +90,7 @@ nav ul li {
 }
 ul button{
    width: 100%;
+    font-size: 5em;
 }
 
 .homepage {
