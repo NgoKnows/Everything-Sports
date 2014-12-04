@@ -35,7 +35,7 @@ body {
 #teambuttons {
     padding-top: 0.25em;
 }
-.dropdown ul{
+.dropdown ul {
     min-width: 15.5em;
 }
 .hover {
@@ -82,11 +82,10 @@ nav ul li {
     margin-top: 1em;
     font-size: 0.6em;
 }
-}
 #navbutton {
     position: relative;
 }
-.homepage{
+.homepage {
     display: inline-block;
     background-color: black;
     margin-right: 0.5em;
@@ -94,45 +93,46 @@ nav ul li {
     height: 16em;
     font: black;
 }
-.homepagesections{
+.homepagesections {
     margin-top: 8em;
     position: relative;
-#graph {
-    resize: both;
 }
-@media screen and (min-width: 768px) {
-    #navbar {
-        display: block;
-        position: absolute;
-        right: 1em;
-        top: -0.5em;
+    #graph {
+        resize: both;
     }
-    textarea.form-control{
-        font-size: 1em;
+    @media screen and (min-width: 768px) {
+        #navbar {
+            display: block;
+            position: absolute;
+            right: 1em;
+            top: -0.5em;
+        }
+        textarea.form-control {
+            font-size: 1em;
+        }
     }
-}
-@media screen and (min-width: 992px) {
-    #playersearch {
-        font-size: 1em;
+    @media screen and (min-width: 992px) {
+        #playersearch {
+            font-size: 1em;
+        }
+        .btn-custom {
+            font-size: 1em;
+        }
+        #navbar {
+            right: 0em;
+        }
+        nav ul li {
+            padding: 1em;
+        }
+        body {
+            font-size: 3em;
+            <!--background-size: 300%;
+            -->
+        }
+        .table {
+            font-size: 1em;
+        }
+        textarea.form-control {
+            font-size: 1em;
+        }
     }
-    .btn-custom {
-        font-size: 1em;
-    }
-    #navbar {
-        right: 0em;
-    }
-    nav ul li {
-        padding: 1em;
-    }
-    body {
-        font-size: 3em;
-        <!--background-size: 300%;
-        -->
-    }
-    .table {
-        font-size: 1em;
-    }
-    textarea.form-control{
-        font-size: 1em;
-    }
-}
