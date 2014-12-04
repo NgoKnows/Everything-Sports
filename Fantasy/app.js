@@ -259,13 +259,14 @@ angular.module('Fantasy', [])
                 .attr("y", 6)
                 .attr("dy", ".71em")
                 .style("text-anchor", "end");
-
-            svg.append("text")
-                .attr("x", (width / 2) - $scope.players.length * (width / 10))
-                .attr("y", 0 - (margin.top / 2))
-                .style("font-size", "16px")
-                .style("text-decoration", "underline")
-                .text($scope.getComparedPlayers());
+            if ($scope.players.length < 5) {
+                svg.append("text")
+                    .attr("x", (width / 2) - $scope.players.length * (width / 10))
+                    .attr("y", 0 - (margin.top / 2))
+                    .style("font-size", "16px")
+                    .style("text-decoration", "underline")
+                    .text($scope.getComparedPlayers());
+            }
 
             var players = svg.selectAll(".name")
                 .data(data)
