@@ -85,6 +85,10 @@ nav ul li {
 #navbutton {
     position: relative;
 }
+ul button{
+   width: 100%;
+}
+
 .homepage {
     display: inline-block;
     background-color: black;
