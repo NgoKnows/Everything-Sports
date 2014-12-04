@@ -59,7 +59,6 @@ function getPlayerList(playersOnTeam) {
         statCats.forEach(function (stat) {
             statistics.push(playerDict[player][stat]);
         })
-        console.log(statistics);
         curPlayer.name = player;
         curPlayer.stats = statistics;
         curPlayer.pos = playerDict[player]['POS'];
@@ -76,6 +75,5 @@ function getDataList() {
                 playerDataList.push(player.name);
             })
         });
-    console.log(playerDataList);
     return playerDataList;
 }

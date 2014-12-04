@@ -6,6 +6,7 @@
 var playerDict = getPlayerDict();
 var playerList;
 var dataListPlayers = getDataList();
+var statCats = ["POS", "G", "GS", "MP", "FG", "FGA", "FG%", "3P", "3PA", "3P%", "2P", "2PA", "2P%", "FT", "FTA", "FT%", "ORB", "DRB", "TRB", "AST", "STL", "BLK", "TOV", "PF", "PTS"];
 
 angular.module('Fantasy', [])
     .controller('TeamController', function ($scope) {
@@ -129,6 +130,7 @@ angular.module('Fantasy', [])
     .controller("CompareController", function ($scope) {
         $scope.players = [];
         $scope.dataListPlayers = getDataList();
+        $scope.trackedCats = ["FG", "FGA", "FG%"];
         $scope.addPlayer = function () {
             var player = [$("#playersearch").val()];
             var newPlayer = getPlayerList(player);
@@ -142,38 +144,165 @@ angular.module('Fantasy', [])
                 $scope.dataListPlayers == dataListPlayers;
             }
         }
+        $scope.getFormattedPlayers = function () {
+            var data = []
+            $scope.players.forEach(function (player) {
+                var formattedPlayer = {
+                    name: player.name
+                };
+                var stats = [];
+                player.stats.forEach(function (stat, index) {
+                    if ($.inArray(statCats[index], $scope.trackedCats) != -1) {
+                        formattedPlayer[statCats[index]] = stat;
+                        stats.push({
+                            name: statCats[index],
+                            value: parseFloat(stat)
+                        });
+                        formattedPlayer.stats = stats;
+                    }
+
+                })
+                data.push(formattedPlayer);
+            });
+            return data;
+        }
+        $scope.getComparedPlayers = function(){
+            var playerString = "";
+            $scope.players.forEach(function(player){
+                playerString+=player.name;
+                playerString+= " vs. ";
+            })
+            return playerString.substring(0, playerString.length - 5);
+        }
+
+
         $scope.createGraph = function () {
-            console.log('hi');
+            d3.select("svg")
+                .remove();
+            var data = $scope.getFormattedPlayers();
+            console.log(data);
             var margin = {
-                    top: 20,
+                    top: 50,
                     right: 20,
-                    bottom: 30,
-                    left: 40
+                    bottom: 50,
+                    left: 60
                 },
-                width = 960 - margin.left - margin.right,
-                height = 500 - margin.top - margin.bottom;
+                width = 1500 - margin.left - margin.right,
+                height = 700 - margin.top - margin.bottom;
             var x0 = d3.scale.ordinal()
                 .rangeRoundBands([0, width], .1);
             var x1 = d3.scale.ordinal();
             var y = d3.scale.linear()
                 .range([height, 0]);
             var color = d3.scale.ordinal()
-                .range(["#097054", "#6599FF", "#FFDE00", "#FF9900"]);
+                .range(_.shuffle(["#F0A3FF", "#0075DC", "#FFA405", "#4C005C", "#FF0010", "#8F7C00", "#990000", "#2BCE48", "#FFCC99",
+                        "#808080", "#5EF1F2", "#9DCC00", "#ffed6f", "#00998F", "#003380", "#94FFB5", "#fb9a99", "#FF5005",
+                        "#005C31", "#b15928", "#426600", "#FFA8BB", "#191919", "#E6E62E", "#C20088", "#740AFF"]));
             var xAxis = d3.svg.axis()
                 .scale(x0)
                 .orient("bottom");
             var yAxis = d3.svg.axis()
                 .scale(y)
                 .orient("left");
-            console.log(d3.select("#dfadf"));
-            console.log(d3.select("#graph"));
+            //console.log(d3.select("#dfadf"));
+            //console.log(d3.select("#graph"));
 
-            var svg = d3.select("#gddsaph").append("svg")
+            var svg = d3.select("#graph").append("svg")
                 .attr("width", width + margin.left + margin.right)
                 .attr("height", height + margin.top + margin.bottom)
                 .append("g")
                 .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+            var catNames = d3.keys(data[0]).filter(function (key) {
+                return key !== "name" && key != "stats";
+            });
+            x0.domain(data.map(function (d) {
+                return d.name;
+            }));
+            x1.domain(catNames).rangeRoundBands([0, x0.rangeBand()]);
+            y.domain([0, d3.max(data, function (d) {
+                return d3.max(d.stats, function (d) {
+                    return d.value;
+                });
+            })]);
+            svg.append("g")
+                .attr("class", "x axis")
+                .attr("transform", "translate(0," + height + ")")
+                .call(xAxis);
 
-        }
+            svg.append("g")
+                .attr("class", "y axis")
+                .call(yAxis)
+                .append("text")
+                .attr("transform", "rotate(-90)")
+                .attr("y", 6)
+                .attr("dy", ".71em")
+                .style("text-anchor", "end");
 
+            svg.append("text")
+                .attr("x", (width/2) - $scope.players.length * (width/5))
+                .attr("y", 0 - (margin.top / 2))
+                .text($scope.getComparedPlayers());
+
+            var players = svg.selectAll(".name")
+                .data(data)
+                .enter().append("g")
+                .attr("class", "g")
+                .attr("transform", function (d) {
+                    return "translate(" + x0(d.name) + ",0)";
+                });
+
+            players.selectAll("rect")
+                .data(function (d) {
+                    return d.stats;
+                })
+                .enter().append("rect")
+                .attr("width", x1.rangeBand())
+                .attr("x", function (d) {
+                    return x1(d.name);
+                })
+                .attr("y", function (d) {
+                    return y(d.value);
+                })
+                .attr("height", function (d) {
+                    return height - y(d.value);
+                })
+                .style("fill", function (d) {
+                    return color(d.name);
+                });
+
+            var legend = svg.selectAll(".legend")
+                .data(catNames.slice().reverse())
+                .enter().append("g")
+                .attr("class", "legend")
+                .attr("transform", function (d, i) {
+                    return "translate(0," + i * 20 + ")";
+                });
+
+            legend.append("rect")
+                .attr("x", width - 18)
+                .attr("width", 18)
+                .attr("height", 18)
+                .style("fill", color);
+
+            legend.append("text")
+                .attr("x", width - 24)
+                .attr("y", 9)
+                .attr("dy", ".35em")
+                .style("text-anchor", "end")
+                .text(function (d) {
+                    return d;
+                });
+
+
+
+            //.text("");
+
+
+        };
+        /*x0.domain(data.map(function (player) {
+                return player.name
+            }));
+            x1.domain(seriesNames).rangeRoundBands([0, x0.rangeBand()]);
+            //))
+            console.log(seriesNames);*/
     });
