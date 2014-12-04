@@ -20,21 +20,26 @@
             <a class="navbar-brand">
                 <img id="esbrand" alt="everything sports brand" src="../img/temp%20(1).png">
             </a>
-            <div class="container">
+            <div>
                 <div class="navbar-header">
                     <button id="navbutton" type="button" class="navbar-toggle collapsed glyphicon glyphicon-align-justify" data-toggle="collapse" ng-click="addPlayer()"> <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
+
                     <nav class="navbar-collapse collapse" role="navigation">
-                        <ul id="navbar" class="nav navbar-nav">
-                            <li><a href="../news/index.html">News</a>
+                        <ul class="nav nav-tabs">
+
+                            <li role="presentation" class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
+      Dropdown <span class="caret"></span>
+    </a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>HI</li>
+                                </ul>
                             </li>
-                            <li><a href="index.html">Fantasy</a>
-                            </li>
-                            <li><a href="index.html">About</a>
-                            </li>
+
                         </ul>
 
                     </nav>
@@ -71,7 +76,7 @@
                 <tbody>
                     <tr ng-repeat="player in players |orderBy: getSortedValue: !sortReverse" ng-class="{ hover: curRow == $index }" ng-mouseover="hoverOverRow()">
                         <td>{{player.name}}</td>
-                        <td ng-mouseover="hoverOverCol()" ng-repeat="stat in player.stats track by $index" ng-hide="hiddenStat($index)">{{stat}}}</td>
+                        <td ng-mouseover="hoverOverCol()" ng-repeat="stat in player.stats track by $index" ng-hide="hiddenStat($index)">{{stat}}</td>
                         <td>
                             <input type="checkbox" ng-click="deletePlayer(player)">
                         </td>

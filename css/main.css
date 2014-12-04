@@ -52,11 +52,13 @@ h3 {
     margin-right: 0em;
 }
 #navbar{
-    padding-top: 0.5em;
+    position: relative;
+    left: 5em;
 }
 
 nav ul li{
     padding: 0.5em;
+    
 }
 .navbar-toggle{
 
@@ -80,7 +82,7 @@ nav ul li{
     .table{
         font-size: 0.5em;
     }
-    
+
 }
 
 
