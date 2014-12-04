@@ -6,12 +6,12 @@
 
 angular.module('SportsNews', [])
     .controller('ArticlesController', function($scope, $http) {
-        $.get('../data/articles.json')
-            .done(function(data) {
-                data = JSON.parse(data);
-                $scope.articles = data;
-                console.log($scope.articles);
-            })
+        $.getJSON('../data/articles.json')
+	        .done(function(data) {
+	            $scope.articles = JSON.parse(data);
+	            console.log($scope.articles.length)
+	            console.log($scope.articles);
+	        });
     });
 
 // function get_articles($scope) {
