@@ -4,6 +4,7 @@
 	<head>
 		<title>Sports News</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"></link>
+    <link rel="stylesheet" type='text/css' href="../css/css/main.css"></link>
 		<link rel="stylesheet" type='text/css' href="css/main.css"></link>
 	</head>
 
@@ -22,14 +23,14 @@
 
                     <nav class="navbar-collapse collapse" role="navigation">
                          <ul id="navbar" class="nav nav-tabs">
-                            <li role="presentation"><a href="../Fantasy/index.html">Fantasy</a>
+                            <li role="presentation" class="active"><a href="../Fantasy/index.html">News</a>
                             </li>
-                            <!-- <li role="presentation" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">Fantasy<span class="caret"></span></a>
+                            <li role="presentation" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">Fantasy<span class="caret"></span></a>
                                 <ul class="dropdown-menu" role="menu">
-                                    <li><a href="index.html">Team Creator</a></li>
-                                    <li><a href="playercompare.html">Player Comparison</a></li>
+                                    <li><a href="../Fantasy/index.html">Team Creator</a></li>
+                                    <li><a href="../Fantasy/playercompare.html">Player Comparison</a></li>
                                 </ul>
-                            </li> -->
+                            </li>
                             <li role="presentation"><a href="index.html">About</a>
                             </li>
                         </ul>
@@ -58,7 +59,7 @@
 	        </section>
 
 			<section class="menu" id="menu">
-				<div class="row" id="teamtable" ng-hide="empty()" ng-repeat="article in articles">
+				<div class="row" id="articles" ng-hide="empty()" ng-repeat="article in articles">
 					<div class="col-md-11" ng-if="filter_by(article, filtered)">
 						<dl>
 							<dt class="title_style">-{{article.title}}-</dt>
