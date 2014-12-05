@@ -17,7 +17,6 @@ h1 {
     margin-top: 0.5em;
 }
 body {
-    padding-left: 2em;
     background-image: url(../img/test.jpg);
     opacity: 0.5;
     background-attachment: fixed;
@@ -60,13 +59,15 @@ h3 {
     position: absolute;
     left: 0%;
     top: 0;
+    width: 75%;
+    max-width: 280px;
 }
 #navbar {
     display: none;
     position: relative;
 }
 #keywordsearch {
-    width: 50%;
+    width:auto;
 }
 nav ul li {
     padding: 0.5em;
@@ -117,6 +118,12 @@ ul button{
         }
         textarea.form-control {
             font-size: 1em;
+        }
+        body{
+            padding-left: 2em;
+        }
+        #esbrand{
+            width: inherit;
         }
     }
     @media screen and (min-width: 992px) {

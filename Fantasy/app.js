@@ -312,7 +312,7 @@ angular.module('Fantasy', [])
                 .style("fill", color);
 
             legend.append("text")
-                .attr("x", width - 28)
+                .attr("x", width - 36)
                 .attr("y", 9)
                 .attr("dy", ".35em")
                 .style("text-anchor", "end")
