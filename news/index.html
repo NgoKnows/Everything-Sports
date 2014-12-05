@@ -1,80 +1,90 @@
 <!doctype html>
 
 <html lang="en">
-	<head>
-		<title>Sports News</title>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"></link>
-    <link rel="stylesheet" type='text/css' href="../css/main.css"></link>
-		<link rel="stylesheet" type='text/css' href="css/main.css"></link>
-	</head>
 
-	<body>
-		<main class="main container-fluid" ng-app="SportsNews" ng-controller="ArticlesController">	
-			<header class="navbar navbar-static-top">
-            <a class="navbar-brand">
+<head>
+    <title>Sports News</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"></link>
+    <link rel="stylesheet" type='text/css' href="../css/main.css"></link>
+    <link rel="stylesheet" type='text/css' href="css/main.css"></link>
+</head>
+
+<body>
+    <main class="main container-fluid" ng-app="SportsNews" ng-controller="ArticlesController">
+        <header class="navbar navbar-static-top">
+            <a href="../index.html" class="navbar-brand">
                 <img id="esbrand" alt="everything sports brand" src="../img/temp%20(1).png">
             </a>
-                <div class="navbar-header">
-                    <button id="navbutton" type="button" class="navbar-toggle collapsed glyphicon glyphicon-align-justify" data-toggle="collapse"> <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
+            <div class="navbar-header">
+                <button id="navbutton" type="button" class="navbar-toggle collapsed glyphicon glyphicon-align-justify" data-toggle="collapse" data-target="mobile-nav"> <span class="sr-only">Toggle navigation</span>
+                </button>
+                <div id="mobile-nav">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href=>Home Page</a>
+                        </li>
+                        <li>
+                            <a href=>Fantasy</a>
+                        </li>
+                        <li>
+                            <a href=>News</a>
+                        </li>
+                    </ul>
+                </div>
+                <nav class="navbar-collapse collapse" role="navigation">
+                    <ul id="navbar" class="nav nav-tabs">
+                        <li role="presentation" class="active"><a href="#" onClick="window.location.reload();return false">News</a>
+                        </li>
+                        <li role="presentation" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">Fantasy<span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="../Fantasy/index.html">Team Creator</a>
+                                </li>
+                                <li><a href="../Fantasy/playercompare.html">Player Comparison</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li role="presentation"><a href="index.html">About</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
 
-                    <nav class="navbar-collapse collapse" role="navigation">
-                         <ul id="navbar" class="nav nav-tabs">
-                            <li role="presentation" class="active"><a href="#" onClick="window.location.reload();return false">News</a>
-                            </li>
-                            <li role="presentation" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">Fantasy<span class="caret"></span></a>
-                                <ul class="dropdown-menu" role="menu">
-                                    <li><a href="../Fantasy/index.html">Team Creator</a></li>
-                                    <li><a href="../Fantasy/playercompare.html">Player Comparison</a></li>
-                                </ul>
-                            </li>
-                            <li role="presentation"><a href="index.html">About</a>
-                            </li>
-                        </ul>
-                    </nav>
-            	</div>
-        	</header>
+        <section>
+            <h1 style="font-size: 70px">News</h1>
+            <h2>See latest stories: </h2>
 
-			<section>
-				<h1 style="font-size: 70px">News</h1>
-				<h2>See latest stories: </h2>
-				
-				<section>
-					<div class="dark">
-						<form>
-							<span><input type="text" class="search square" placeholder="Enter search keywords..." ng-model="search_string">
+            <section>
+                <div class="dark">
+                    <form>
+                        <span><input type="text" class="search square" placeholder="Enter search keywords..." ng-model="search_string">
 							    <div class="btn-group">
 				                	<button type="button" id="refresh" class="btn btn-custom" ng-click="filtered = search_string">Apply Search Terms</button>
 				                </div>
 	            			</span>
-	            			<p style="font-size: 17px; margin-bottom: 5px"><br>separate terms by a space</p>
-						</form>
-					</div>
+                        <p style="font-size: 17px; margin-bottom: 5px">
+                            <br>separate terms by a space</p>
+                    </form>
+                </div>
+            </section>
 
-	                
+            <section class="menu" id="menu">
+                <div class="row row-md-height" id="articles">
+                    <div class="col-md-6" ng-repeat="article in articles" ng-if="filter_by(article, filtered)">
+                        <dl>
+                            <dt class="title_style"><a href="{{article.link}}">{{article.title}}</a></dt>
+                            <dd class="title_date">{{article.date}}</dd>
+                            <dd class="title_description"><span class="fla">Headline: </span> {{article.description}}</dd>
+                            <dd class="title_link">Author: {{article.creator}}</dd>
+                        </dl>
+                    </div>
+                </div>
+            </section>
 
-	        </section>
-
-			<section class="menu" id="menu">
-				<div class="row row-md-height" id="articles">
-					<div class="col-md-6" ng-repeat="article in articles" ng-if="filter_by(article, filtered)">
-						<dl>
-							<dt class="title_style"><a href="{{article.link}}">{{article.title}}</a></dt>
-							<dd class="title_date">{{article.date}}</dd>
-							<dd class="title_description"><span class="fla">Headline: </span> {{article.description}}</dd>
-							<dd class="title_link">Author: {{article.creator}}</dd>
-						</dl>
-					</div>
-				</div>
-			</section>	
-
-	    </main>
-	</body>
-	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.2/angular.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-	<script src="js/app.js"></script>
+    </main>
+</body>
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.2/angular.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<script src="js/app.js"></script>
 <html>
