@@ -62,10 +62,10 @@
 				<div class="row row-md-height" id="articles">
 					<div class="col-md-6" ng-repeat="article in articles" ng-if="filter_by(article, filtered)">
 						<dl>
-							<dt class="title_style">-{{article.title}}-</dt>
+							<dt class="title_style"><a href="{{article.link}}">{{article.title}}</a></dt>
 							<dd class="title_date">{{article.date}}</dd>
 							<dd class="title_description"><span class="fla">Headline: </span> {{article.description}}</dd>
-							<dd class="title_link">Author: {{article.creator}} | Full Article: <a style="lfs" href="{{article.link}}">CLICK</a> to read more.</dd>
+							<dd class="title_link">Author: {{article.creator}}</dd>
 						</dl>
 					</div>
 				</div>
