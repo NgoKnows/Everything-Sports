@@ -40,19 +40,13 @@ body {
 .hover {
     background-color: #C7C7C7;
 }
-#dropdownMenu {
-    display:
-}
 input[type=checkbox] {
     margin-left: 1.5em;
 }
 h3 {
     font-size: 25px;
 }
-#comparedplayers{
-
-}
-#mobile-nav{
+#comparedplayers {} #mobile-nav {
     width: 100%;
     background-color: black;
     opacity: 0.9;
@@ -73,7 +67,7 @@ h3 {
     font-size: 88%;
 }
 #keywordsearch {
-    width:auto;
+    width: auto;
 }
 nav ul li {
     padding: 0.5em;
@@ -95,11 +89,10 @@ nav ul li {
 #navbutton {
     position: relative;
 }
-ul button{
-   width: 100%;
+ul button {
+    width: 100%;
     font-size: 5em;
 }
-
 .homepage {
     display: inline-block;
     background-color: black;
@@ -112,48 +105,158 @@ ul button{
     margin-top: 8em;
     position: relative;
 }
-    #graph {
-        resize: both;
+#graph {
+    resize: both;
+}
+@media screen and (min-width: 768px) {
+    #navbar {
+        display: block;
+        position: absolute;
+        right: 1em;
+        top: -0.5em;
     }
-    @media screen and (min-width: 768px) {
-        #navbar {
-            display: block;
-            position: absolute;
-            right: 1em;
-            top: -0.5em;
-        }
-        textarea.form-control {
-            font-size: 1em;
-        }
-        body{
-            padding-left: 2em;
-        }
-        #esbrand{
-            width: inherit;
-        }
+    textarea.form-control {
+        font-size: 1em;
     }
-    @media screen and (min-width: 992px) {
-        #playersearch {
-            font-size: 1em;
-        }
-        .btn-custom {
-            font-size: 1em;
-        }
-        #navbar {
-            right: 0em;
-        }
-        nav ul li {
-            padding: 1em;
-        }
-        body {
-            font-size: 3em;
-            <!--background-size: 300%;
-            -->
-        }
-        .table {
-            font-size: 1em;
-        }
-        textarea.form-control {
-            font-size: 1em;
-        }
+    body {
+        padding-left: 2em;
     }
+    #esbrand {
+        width: inherit;
+    }
+}
+@media screen and (min-width: 992px) {
+    #playersearch {
+        font-size: 1em;
+    }
+    .btn-custom {
+        font-size: 1em;
+    }
+    #navbar {
+        right: 0em;
+    }
+    nav ul li {
+        padding: 1em;
+    }
+    body {
+        font-size: 3em;
+        <!--background-size: 300%;
+        -->
+    }
+    .table {
+        font-size: 1em;
+    }
+    textarea.form-control {
+        font-size: 1em;
+    }
+}
+#comparedplayers {} #mobile-nav {
+    width: 100%;
+    background-color: black;
+    opacity: 0.9;
+}
+.mobilefantasy {
+    color: blue;
+}
+#esbrand {
+    margin-right: 0em;
+    margin-bottom: 0em;
+    padding-bottom: 0;
+    position: absolute;
+    left: 0%;
+    top: 0;
+    width: 75%;
+    max-width: 280px;
+}
+#navbar {
+    display: none;
+    position: relative;
+    font-size: 88%;
+}
+#keywordsearch {
+    width: auto;
+}
+nav ul li {
+    padding: 0.5em;
+    padding-bottom: 0.4em;
+    padding-top: 1em padding-left: 0em;
+    padding-right: 0em;
+}
+.navbar-toggle {} li ul li {
+    font-size: 1.5em;
+}
+#playersearch {
+    width: 20%;
+    height: 2em;
+    min-width: 205px;
+    margin-bottom: 0.5em;
+    margin-top: 1em;
+    font-size: 0.6em;
+}
+#navbutton {
+    position: relative;
+}
+ul button {
+    width: 100%;
+    font-size: 5em;
+}
+.homepage {
+    display: inline-block;
+    background-color: black;
+    margin-right: 0.5em;
+    opacity: 0.5;
+    height: 16em;
+    font: black;
+}
+.homepagesections {
+    margin-top: 8em;
+    position: relative;
+}
+#graph {
+    resize: both;
+}
+@media screen and (min-width: 768px) {
+    #navbar {
+        display: block;
+        position: absolute;
+        right: 1em;
+        top: -0.5em;
+    }
+    .mobilenav {
+        display: none;
+    }
+    textarea.form-control {
+        font-size: 1em;
+    }
+    body {
+        padding-left: 2em;
+    }
+    #esbrand {
+        width: inherit;
+    }
+}
+@media screen and (min-width: 992px) {
+    #playersearch {
+        font-size: 1em;
+    }
+    .btn-custom {
+        font-size: 1em;
+    }
+    #navbar {
+        right: 0em;
+    }
+    nav ul li {
+        padding: 1em;
+    }
+    body {
+        font-size: 3em;
+        <!--background-size: 300%;
+        -->
+    }
+    .table {
+        font-size: 1em;
+    }
+    textarea.form-control {
+        font-size: 1em;
+    }
+}
