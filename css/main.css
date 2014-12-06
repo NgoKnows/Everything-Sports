@@ -222,9 +222,6 @@ ul button {
         right: 1em;
         top: -0.5em;
     }
-    .mobilenav {
-        display: none;
-    }
     textarea.form-control {
         font-size: 1em;
     }
@@ -233,6 +230,9 @@ ul button {
     }
     #esbrand {
         width: inherit;
+    }
+    .mobilenav {
+        display: none;
     }
 }
 @media screen and (min-width: 992px) {
