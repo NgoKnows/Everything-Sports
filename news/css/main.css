@@ -45,7 +45,7 @@ h1 {
 body {
     padding:0px;
     padding-left: 2em;
-    padding-right: 0em;
+    padding-right: 1em;
     background-image: url(../../img/test.jpg);
     opacity: 0.5;
     background-attachment: fixed;
@@ -95,6 +95,9 @@ nav {
         right: 1em;
         top: -0.5em;
     }
+    .column {
+        width: 200%;
+    }
 }
 
 @media screen and (min-width: 992px){
@@ -110,12 +113,10 @@ nav {
 }
 
 .menu {
-
     margin-right:;
     color: #949494;
     font-style: bold;
     opacity: 1;
-
 }
 
 .title_date {
@@ -130,7 +131,7 @@ nav {
     color: black;
     font-weight: 400;
     opacity: 1;
-    font-size: 35px;
+    font-size: 95%;
 /*    padding-left: 1%;*/
 }
 
