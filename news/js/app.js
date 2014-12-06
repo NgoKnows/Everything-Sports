@@ -28,6 +28,6 @@ angular.module('SportsNews', [])
                         visible = true;
                     }
                 });
-                return visible; // (words.indexOf(article.title.toLowerCase()) > -1)
+                return visible;
             };
     });
