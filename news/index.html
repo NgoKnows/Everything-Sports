@@ -5,12 +5,12 @@
 <head>
     <title>Sports News</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"></link>
-    <link rel="stylesheet" type='text/css' href="../css/main.css"></link>
+    <!-- <link rel="stylesheet" type='text/css' href="../css/main.css"></link> -->
     <link rel="stylesheet" type='text/css' href="css/main.css"></link>
 </head>
 
 <body>
-    <main class="main container-fluid" ng-app="SportsNews" ng-controller="ArticlesController">
+    <main style="height:100vh" class="main container-fluid" ng-app="SportsNews" ng-controller="ArticlesController">
         <header class="navbar navbar-static-top">
             <a href="../index.html" class="navbar-brand">
                 <img id="esbrand" alt="everything sports brand" src="../img/temp%20(1).png">
@@ -73,9 +73,10 @@
                 </div>
             </section>
 
+
             <section class="menu" id="menu">
-                <div class="row row-md-height" id="articles">
-                    <div class="col-md-6" ng-repeat="article in articles" ng-if="filter_by(article, filtered)">
+                <div class="row .row-eq-height" id="articles">
+                    <div id="equalheight" class="column col-sm-4 demo" ng-repeat="article in articles" ng-if="filter_by(article, filtered)">
                         <dl>
                             <dt class="title_style"><a href="{{article.link}}">{{article.title}}</a></dt>
                             <dd class="title_date">{{article.date}}</dd>
@@ -85,7 +86,6 @@
                     </div>
                 </div>
             </section>
-
     </main>
 </body>
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
