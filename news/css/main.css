@@ -86,21 +86,12 @@ nav {
 
 
 @media screen and (min-width: 768px){
-    #navbar{
-        display: block;
-        position: absolute;
-        right: 1em;
-        top: -0.5em;
-    }
     .column {
         width: 200%;
     }
 }
 
 @media screen and (min-width: 992px){
-    #navbar{
-        right: 0em;
-    }
     nav ul li{
         padding: 1em;
     }
