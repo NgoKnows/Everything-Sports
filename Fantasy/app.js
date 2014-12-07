@@ -131,6 +131,7 @@ angular.module('Fantasy', [])
         $scope.players = [];
         $scope.dataListPlayers = getDataList();
         $scope.trackedCats = ["FG", "FGA", "FG%"];
+        $scope.groupBy = "stat";
         $scope.addPlayer = function () {
             var player = [$("#playersearch").val()];
             var newPlayer = getPlayerList(player);
@@ -157,7 +158,7 @@ angular.module('Fantasy', [])
             $scope.players.splice(indexOfPlayer, 1);
         }
         $scope.getFormattedPlayers = function () {
-            var data = []
+            var data = [];
             $scope.players.forEach(function (player) {
                 var formattedPlayer = {
                     name: player.name
@@ -178,6 +179,33 @@ angular.module('Fantasy', [])
             });
             return data;
         }
+        $scope.getFormattedStats = function () {
+
+            var data = [];
+            $scope.trackedCats.forEach(function (cat) {
+                var formattedStat = {
+                    name: cat,
+                    stats: []
+                };
+                data.push(formattedStat);
+            })
+            $scope.players.forEach(function (player) {
+                var i = 0;
+                player.stats.forEach(function (stat, index) {
+                    if ($.inArray(statCats[index], $scope.trackedCats) != -1) {
+                        console.log(i);
+                        data[i][player.name] = stat;
+                        data[i].stats.push({
+                            name: player.name,
+                            value: parseFloat(stat)
+                        });
+                        i++;
+                    }
+                });
+            })
+            return data;
+
+        }
         $scope.getComparedPlayers = function () {
             var playerString = "";
             $scope.players.forEach(function (player) {
@@ -186,14 +214,17 @@ angular.module('Fantasy', [])
             })
             return playerString.substring(0, playerString.length - 5);
         }
+        $scope.setGroupBy = function (group) {
+            $scope.groupBy = group;
+        }
         $scope.setTrackedCats = function (num) {
             if (num == 0) {
-                $scope.trackedCats = ['FG', 'FGA',"3P", "3PA", "FT", "FTA", "PTS"];
+                $scope.trackedCats = ['FG', 'FGA', "3P", "3PA", "FT", "FTA", "PTS"];
             } else if (num == 1) {
                 $scope.trackedCats = ['TRB', 'AST', 'PTS'];
-            } else if(num == 2){
+            } else if (num == 2) {
                 $scope.trackedCats = ['BLK', 'STL'];
-            }else{
+            } else {
                 $scope.trackedCats = ["FG%", "2P%", "3P%", "FT%"];
             }
 
@@ -203,7 +234,11 @@ angular.module('Fantasy', [])
         $scope.createGraph = function () {
             d3.select("svg")
                 .remove();
-            var data = $scope.getFormattedPlayers();
+            if ($scope.groupBy == "stat") {
+                var data = $scope.getFormattedStats();
+            } else {
+                var data = $scope.getFormattedPlayers();
+            }
             console.log(data);
             var margin = {
                     top: 50,
@@ -228,17 +263,17 @@ angular.module('Fantasy', [])
             var yAxis = d3.svg.axis()
                 .scale(y)
                 .orient("left");
-            //console.log(d3.select("#dfadf"));
-            //console.log(d3.select("#graph"));
 
             var svg = d3.select("#graph").append("svg")
                 .attr("width", width + margin.left + margin.right)
                 .attr("height", height + margin.top + margin.bottom)
                 .append("g")
                 .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
             var catNames = d3.keys(data[0]).filter(function (key) {
                 return key !== "name" && key != "stats";
             });
+
             x0.domain(data.map(function (d) {
                 return d.name;
             }));
@@ -261,6 +296,7 @@ angular.module('Fantasy', [])
                 .attr("y", 6)
                 .attr("dy", ".71em")
                 .style("text-anchor", "end");
+
             if ($scope.players.length < 5) {
                 svg.append("text")
                     .attr("x", (width / 2) - $scope.players.length * (width / 10))
@@ -319,17 +355,5 @@ angular.module('Fantasy', [])
                 .text(function (d) {
                     return d;
                 });
-
-
-
-            //.text("");
-
-
         };
-        /*x0.domain(data.map(function (player) {
-                return player.name
-            }));
-            x1.domain(seriesNames).rangeRoundBands([0, x0.rangeBand()]);
-            //))
-            console.log(seriesNames);*/
     });
