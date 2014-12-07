@@ -8,6 +8,7 @@ import sys
 import time
 import urllib2
 import json
+from operator import itemgetter
 
 URLS = {
     'top': 'http://sports.espn.go.com/espn/rss/news',
@@ -50,11 +51,9 @@ def main():
                     articles.append(article)
                     # print '--->', article
 
-                     # for word in keywords:
-                     #     if word in article['title'].lower() or word in article['description'].lower() or word in article['link'].lower():
-                     #         if article not in articles:
-                     #         	articles.append(article)
-
+                datetime.strptime(article['date'], '%a, %d %b %y %H:%M:%S %Z') # converts date string to a datetime object so that the list can be sorted by date.
+                json.dump(sorted(articles, key=itemgetter('date')), f) 
+                    
             except Exception, e:
                 # print str(e)
                 pass
@@ -68,6 +67,7 @@ def main():
     # articles_json = json.dumps(articles)
     with open('../data/articles.json', 'w') as outfile:
         json.dump(articles, outfile)
+
 
 
 
