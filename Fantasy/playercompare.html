@@ -66,7 +66,7 @@
 
         <section>
             <form class="navbar-form" role="search">
-                <input type="text" id="playersearch" class="form-control" list="playerlist" ng-click="search()" placeholder="LeBron James">
+                <input type="text" id="playersearch" class="form-control" list="playerlist" ng-click="search()" placeholder="Search for player!">
                 <datalist id="playerlist">
                     <option ng-repeat="playerName in dataListPlayers">{{playerName}}</option>
                 </datalist>
@@ -91,6 +91,7 @@
                     </ul>
                 </div>
                 <h2 ng-hide="empty()">Players To Be Compared:</h2>
+                <h3 ng-hide="empty()">Click to Delete</h3>
                 <ul>
                     <li id="comparedplayers" ng-repeat="player in players" ng-click="deletePlayer(player)">{{player.name }} </li>
                 </ul>
