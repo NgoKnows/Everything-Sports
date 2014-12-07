@@ -64,12 +64,13 @@
             <h1>Fantasy Module</h1>
             <h2>Team Creator</h2>
             <form class="navbar-form" role="search">
-                <input type="text" id="playersearch" class="form-control" list="playerlist" ng-click="search()" placeholder="LeBron James">
+                <input type="text" id="playersearch" class="form-control" list="playerlist" ng-click="search()" placeholder="Search for player!">
                 <datalist id="playerlist">
                     <option ng-repeat="playerName in dataListPlayers">{{playerName}}</option>
                 </datalist>
                 <button ng-click="addPlayer()" type="submit" class="btn btn-custom">Add player!</button>
             </form>
+            <h2>Copy and Paste Team Here!</h2>
             <textarea class="form-control" rows="8" cols="2" type="text" name="comment" id="team" placeholder="Your team here!"></textarea>
             <div id="teambuttons" class="form-group">
                 <button class="btn btn-custom" ng-click="refreshPlayerList()" id="submit">Make My Team!</button>
@@ -94,7 +95,7 @@
                 <thead>
                     <tr>
                         <th>Name</th>
-                        <th ng-repeat="cat in statCats" ng-hide="isHidden(cat)" ng-click="sortBy(cat)">{{cat}}</th>
+                        <th id="categories" ng-repeat="cat in statCats" ng-hide="isHidden(cat)" ng-click="sortBy(cat)">{{cat}}</th>
                         <th>Remove</th>
                     </tr>
                 </thead>
