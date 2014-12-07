@@ -11,7 +11,7 @@
 
 <body>
     <main style="height:100vh" class="main container-fluid" ng-app="SportsNews" ng-controller="ArticlesController">
-        <header class="navbar navbar-static-top">
+                <header class="navbar navbar-static-top">
             <a href="../index.html" class="navbar-brand">
                 <img id="esbrand" alt="everything sports brand" src="../img/temp%20(1).png">
             </a>
@@ -38,7 +38,7 @@
                 </div>
                 <nav class="navbar-collapse collapse" role="navigation">
                     <ul id="navbar" class="nav nav-tabs">
-                        <li role="presentation" class="active"><a href="#" onClick="window.location.reload();return false">News</a>
+                        <li role="presentation"><a href="../index.html">Home</a>
                         </li>
                         <li role="presentation" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">Fantasy<span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
@@ -46,15 +46,15 @@
                                 </li>
                                 <li><a href="../Fantasy/playercompare.html">Player Comparison</a>
                                 </li>
+
                             </ul>
                         </li>
-                        <li role="presentation"><a href="index.html">About</a>
+                        <li role="presentation" class="active" onClick="window.location.reload();return false"><a href="news/index.html">News</a>
                         </li>
                     </ul>
                 </nav>
             </div>
         </header>
-
         <section>
             <h1 style="font-size: 70px">News</h1>
             <h2>See latest stories: </h2>
