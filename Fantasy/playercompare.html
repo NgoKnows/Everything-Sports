@@ -16,7 +16,7 @@
 
 <body ng-app="Fantasy" ng-controller="CompareController">
     <main class="container-fluid">
-                <header class="navbar navbar-static-top">
+        <header class="navbar navbar-static-top">
             <a href="../index.html" class="navbar-brand">
                 <img id="esbrand" alt="everything sports brand" src="../img/temp%20(1).png">
             </a>
@@ -43,17 +43,18 @@
                 </div>
                 <nav class="navbar-collapse collapse" role="navigation">
                     <ul id="navbar" class="nav nav-tabs">
-                        <li role="presentation" class="active"><a href="#" onClick="window.location.reload();return false">News</a>
+                        <li role="presentation"><a href="../index.html">Home</a>
                         </li>
-                        <li role="presentation" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">Fantasy<span class="caret"></span></a>
+                        <li role="presentation" class="dropdown"><a class=" active dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">Fantasy<span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="../Fantasy/index.html">Team Creator</a>
                                 </li>
-                                <li><a href="../Fantasy/playercompare.html">Player Comparison</a>
+                                <li class="active"><a href="../Fantasy/playercompare.html">Player Comparison</a>
                                 </li>
+
                             </ul>
                         </li>
-                        <li role="presentation"><a href="index.html">About</a>
+                        <li role="presentation"><a href="../news/index.html">News</a>
                         </li>
                     </ul>
                 </nav>
@@ -75,6 +76,7 @@
                 <div class="dropdown">
                     <button class="btn btn-custom dropdown-toggle" type="button" id="dropdownMenu" data-toggle="dropdown" aria-expanded="true">Categories to Compare<span class="caret"></span>
                     </button>
+
                     <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
                         <li>
                             <button class="btn btn-custom" ng-click="setTrackedCats(0)">Offensive Stats</button>
@@ -90,10 +92,25 @@
                         </li>
                     </ul>
                 </div>
+                <div class="dropdown">
+                    <button class="btn btn-custom dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">Group By<span class="caret"></span>
+                    </button>
+
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+                        <li>
+                            <button class="btn btn-custom" ng-click="setTrackedCats(0)">Statistic</button>
+                        </li>
+                        <li>
+                            <button class="btn btn-custom" ng-click="setTrackedCats(2)">Player</button>
+                        </li>
+                    </ul>
+                </div>
+
+
                 <h2 ng-hide="empty()">Players To Be Compared:</h2>
                 <h3 ng-hide="empty()">Click to Delete</h3>
                 <ul>
-                    <li id="comparedplayers" ng-repeat="player in players" ng-click="deletePlayer(player)">{{player.name }} </li>
+                    <li id="comparedplayers" ng-repeat="player in players" ng-click="deletePlayer(player)">{{player.name }}</li>
                 </ul>
         </section>
         </section>
