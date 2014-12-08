@@ -74,10 +74,10 @@
             </section>
 
 
-            <section class="menu" id="menu">
+            <section class="menu" id="menu" >
                 <div class="row .row-eq-height" id="articles">
-                    <div id="equalheight" class="column col-md-4 demo" ng-repeat="article in articles | orderBy: 'date'" ng-if="filter_by(article, filtered)">
-                        <dl>
+                    <div id="equalheight" class="col-md-6 col-xs-6 column" ng-repeat="article in articles | orderBy: 'date'" ng-if="filter_by(article, filtered)">
+                        <dl style="overflow: auto; height: 240px">
                             <dt class="title_style"><a href="{{article.link}}">{{article.title}}</a></dt>
                             <dd class="title_date">{{article.date}}</dd>
                             <dd class="title_description"><span class="fla">Headline: </span> {{article.description}}</dd>

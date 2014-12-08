@@ -1,4 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:700italic,400);
 
 
 .dark input[type=text] {
@@ -84,19 +84,112 @@ nav {
     position: relative;
 }
 
+@media screen and (max-width: 788px) {
+    #navbar {
+        display: block;
+        position: absolute;
+        right: 1em;
+        top: -0.5em;
+    }
 
-@media screen and (min-width: 768px){
+    body {
+        padding-left: 2em;
+        margin: 0;
+    }
+
+    #esbrand {
+        width: inherit;
+    }
+
+    .btn-custom {
+        font-size: 0.7em;
+        margin-bottom: 70%;
+        width:25%;
+    }
+
+    .dark input[type=text] {
+        width:85%;
+    }  
+
     .column {
-        width: 200%;
+        border-style: solid;
+        border-width: 5px 5px;
+        border-color: black;
+        width: 100%;
+        margin-right: 0px;
+        margin-bottom: 5px;
+    }
+
+    .col-xs-offset-* {
+
+    }
+    .menu {
+        margin: 0;
+        padding: 0;
+        width: 100%
+    }
+
+    .container-fluid {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+    }
+
+    #equalheight {
+        overflow: scroll;
     }
 }
 
-@media screen and (min-width: 992px){
-    nav ul li{
-        padding: 1em;
+@media screen and (max-width: 992px) {
+    #navbar {
+        display: block;
+        position: absolute;
+        right: 1em;
+        top: -0.5em;
     }
-    body{
-        font-size: 3em;
+
+    body {
+        padding-left: 2em;
+        margin: 0;
+    }
+
+    #esbrand {
+        width: inherit;
+    }
+
+    .btn-custom {
+        font-size: 0.7em;
+        margin-bottom: 4px;
+        width:100%;
+    }
+
+    .dark input[type=text] {
+        opacity: .6;
+        width:85%;
+    }
+
+    .column {
+        border-style: solid;
+        border-width: 5px 5px;
+        border-color: black;
+        width: 100%;
+        margin-right: 0px;
+        margin-bottom: 5px;
+    }
+
+    .container-fluid {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+    }
+
+    #equalheight {
+        overflow: scroll;
+    }
+    .menu {
+        margin: 0;
+        padding: 0;
+        width: 100%
     }
 }
 
@@ -109,7 +202,7 @@ nav {
 
 .title_date {
     color:  #949494;
-    font-weight: 400;
+    font-weight: 300;
     opacity: 1;
     font-size: 60%;
 }
@@ -117,17 +210,18 @@ nav {
 .title_style {
     margin-right: 0em;
     color: black;
-    font-weight: 400;
+    font-weight: 300;
     opacity: 1;
-    font-size: 95%;
-/*    padding-left: 1%;*/
+    font-size: 85%;
 }
 
 .title_description {
     margin-right: 0em;
     border-width: 1px 1px;
     font-size: 17px;
-    font-style: normal; 
+    font-style: normal;
+    font-weight: 700; 
+    color: black;
 }
 
 .fla, .lfs {
@@ -150,7 +244,7 @@ nav {
 dt {
     font-weight: 400;
     opacity: 1;
-    /*margin-left: 1%;*/
+    font-size: 30px;
 }
 
 hr {
@@ -166,15 +260,13 @@ dd {
     opacity: 1;
     font-size: 80%;
     font-style: italic;
-/*    margin-left: 1em;
-*/    margin-bottom: 1em;
+    margin-bottom: 1em;
 
 }
 
 dl {
-    max-height: 320px;
-    min-height: 280px;
-    overflow: hidden;
+
+    overflow: auto;
 }
 
 .column {
@@ -185,6 +277,8 @@ dl {
     margin-right: 10px;
     margin-bottom: -99999px;
     padding-bottom: 99999px;
+    overflow: auto;
+    min-height: 200px;
 
 }
 
