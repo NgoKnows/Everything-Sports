@@ -310,34 +310,34 @@ angular.module('Fantasy', [])
                 .data(data)
                 .enter().append("g")
                 .attr("class", "g")
-                .attr("transform", function (d) {
-                    return "translate(" + x0(d.name) + ",0)";
+                .attr("transform", function (a) {
+                    return "translate(" + x0(a.name) + ",0)";
                 });
 
             players.selectAll("rect")
-                .data(function (d) {
+                .data(function (a) {
                     return d.stats;
                 })
                 .enter().append("rect")
                 .attr("width", x1.rangeBand())
-                .attr("x", function (d) {
-                    return x1(d.name);
+                .attr("x", function (a) {
+                    return x1(a.name);
                 })
-                .attr("y", function (d) {
-                    return y(d.value);
+                .attr("y", function (a) {
+                    return y(a.value);
                 })
-                .attr("height", function (d) {
-                    return height - y(d.value);
+                .attr("height", function (a) {
+                    return height - y(a.value);
                 })
-                .style("fill", function (d) {
-                    return color(d.name);
+                .style("fill", function (a) {
+                    return color(a.name);
                 });
 
             var legend = svg.selectAll(".legend")
                 .data(catNames.slice().reverse())
                 .enter().append("g")
                 .attr("class", "legend")
-                .attr("transform", function (d, i) {
+                .attr("transform", function (a, i) {
                     return "translate(0," + i * 20 + ")";
                 });
 
@@ -352,8 +352,8 @@ angular.module('Fantasy', [])
                 .attr("y", 9)
                 .attr("dy", ".35em")
                 .style("text-anchor", "end")
-                .text(function (d) {
-                    return d;
+                .text(function (a) {
+                    return a;
                 });
         };
     });
