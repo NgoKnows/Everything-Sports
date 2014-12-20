@@ -274,13 +274,13 @@ angular.module('Fantasy', [])
                 return key !== "name" && key != "stats";
             });
 
-            x0.domain(data.map(function (d) {
-                return d.name;
+            x0.domain(data.map(function (a) {
+                return a.name;
             }));
             x1.domain(catNames).rangeRoundBands([0, x0.rangeBand()]);
-            y.domain([0, d3.max(data, function (d) {
-                return d3.max(d.stats, function (d) {
-                    return d.value;
+            y.domain([0, d3.max(data, function (a) {
+                return d3.max(a.stats, function (a) {
+                    return a.value;
                 });
             })]);
             svg.append("g")
@@ -316,7 +316,7 @@ angular.module('Fantasy', [])
 
             players.selectAll("rect")
                 .data(function (a) {
-                    return d.stats;
+                    return a.stats;
                 })
                 .enter().append("rect")
                 .attr("width", x1.rangeBand())
