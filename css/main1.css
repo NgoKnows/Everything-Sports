@@ -1,0 +1,7 @@
+.navbar-brand{
+    padding-top: 0;
+}
+#playerlist{
+    max-height: 10em;
+    overflow-y: scroll;
+}
