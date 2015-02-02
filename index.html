@@ -8,80 +8,56 @@
     <meta name="description" content="Home page for Fantasy">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/dist/css/flat-ui.css">
+    <link rel="stylesheet" href="css/main1.css">
 
     <title>Everything Sports</title>
 
 </head>
 
 <body>
-    <main class="container-fluid">
-                <header class="navbar navbar-static-top">
-            <a href="../index.html" class="navbar-brand">
-                <img id="esbrand" alt="everything sports brand" src="img/temp%20(1).png">
-            </a>
+    <div class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="container">
             <div class="navbar-header">
-                <button id="navbutton" type="button" class="navbar-toggle collapsed glyphicon glyphicon-align-justify" data-toggle="collapse" data-target="#mobile-nav"> <span class="sr-only">Toggle navigation</span>
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
                 </button>
-                <div id="mobile-nav" class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav mobilenav">
-                        <li>
-                            <a href="index.html">Home Page</a>
-                        </li>
-                        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">Fantasy<span class="caret"></span></a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="Fantasy/index.html">Team Creator</a>
-                                </li>
-                                <li><a href="Fantasy/playercompare.html">Player Comparison</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="active">
-                            <a href="news/index.html">News</a>
-                        </li>
-                    </ul>
-                </div>
-                <nav class="navbar-collapse collapse" role="navigation">
-                    <ul id="navbar" class="nav nav-tabs">
-                        <li role="presentation" class="active" onClick="window.location.reload();return false"><a href="index.html">Home</a>
-                        </li>
-                        <li role="presentation" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">Fantasy<span class="caret"></span></a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="Fantasy/index.html">Team Creator</a>
-                                </li>
-                                <li><a href="Fantasy/playercompare.html">Player Comparison</a>
-                                </li>
-
-                            </ul>
-                        </li>
-                        <li role="presentation"><a href="news/index.html">News</a>
-                        </li>
-                    </ul>
-                </nav>
+                <a href="../index.html" class="navbar-brand">
+                    <img id="esbrand" alt="everything sports brand" src="img/temp%20(1).png">
+                </a>
             </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="index.html">Home</a>
+                    </li>
+                    <li><a href="/Fantasy/index.html">Team Creator</a>
+                    </li>
+                    <li><a href="/Fantasy/playercompare.html">Player Comparison</a>
+                    </li>
+                </ul>
+            </div>
+            <!--/.nav-collapse -->
+        </div>
+    </div>
+    <main class="container">
+        <header>
+
         </header>
-        </header>
-        <section class="row homepagesections">
-            <div class="homepage col-md-3 homepage1">
+        <div class="homepage">
             <h1>Everything Sports</h1>
-                This is a sports website, meant to be your one stop for all things sports!
-            </div>
-            <div class="homepage col-md-3 homepage2">
-            <h1>News</h1>
-                View current related <a href="news/index.html">news</a> about your favorite topics! You can search for any relevant terms, covering the major sports seen on ESPN. See the news keep up to date with your favorite team, sports, or league!
-            </div>
-            <div class ="homepage col-md-5 homepage3">
-            <h1>Fantasy</h1>
-                <section>Provides fantasy tools to the savvy fantasy player!<br>
-                <h2>Team Creator:</h2> Allows you to copy and paste your team straight from your fantasy team page and copy all that text into the team creator. The team creator will grab all your players from that text and give you a table with all your players which you can sort, remove, and add from. Gives you an easy way to view your fantasy teams!<br>
-                    <a href="http://www.fleaflicker.com/nba/team?leagueId=14203&teamId=88334">Sample Fantasy Team!</a>
-               <h2>Player Comparison:</h2> Allows you to compare players stats visually, you can add as many players as you like and compare them on stats such as shot percentages, offensive stats, defensive stats, and more!</section>
-            </div>
+            <h6>This is a fantasy basketball sports website, meant to provide tools for the savvy fantasy player!</h6>
+        </div>
 
+        <div class="homepage">
 
-        </section>
-
-
+                <br>
+                <h2>Team Creator:</h2>
+                <h6>Allows you to copy and paste your team straight from your fantasy team page and copy all that text into the team creator. The team creator will grab all your players from that text and give you a table with all your players which you can sort, remove, and add from. Gives you an easy way to view your fantasy teams!</h6>
+                <a href="http://www.fleaflicker.com/nba/team?leagueId=14203&teamId=88334">Sample Fantasy Team!</a>
+                <h2>Player Comparison:</h2>
+                <h6>Allows you to compare players stats visually, you can add as many players as you like and compare them on stats such as shot percentages, offensive stats, defensive stats, and more!</h6>
+            </section>
+        </div>
     </main>
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.2/angular.min.js"></script>
