@@ -8,64 +8,76 @@
     <meta name="description" content="Home page for Fantasy">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/dist/css/flat-ui.min.css">
+
+    <link rel="stylesheet" href="../css/main1.css">
 
     <title>Fantasy Sports</title>
 
 </head>
 
 <body ng-app="Fantasy" ng-controller="CompareController">
-    <main class="container-fluid">
-        <header class="navbar navbar-static-top">
-            <a href="../index.html" class="navbar-brand">
-                <img id="esbrand" alt="everything sports brand" src="../img/temp%20(1).png">
-            </a>
+    <div class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="container">
             <div class="navbar-header">
-                <button id="navbutton" type="button" class="navbar-toggle collapsed glyphicon glyphicon-align-justify" data-toggle="collapse" data-target="#mobile-nav"> <span class="sr-only">Toggle navigation</span>
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
                 </button>
-                <div id="mobile-nav" class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav mobilenav">
-                        <li>
-                            <a href="../index.html">Home Page</a>
-                        </li>
-                        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">Fantasy<span class="caret"></span></a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="index.html">Team Creator</a>
-                                </li>
-                                <li><a href="playercompare.html">Player Comparison</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="active">
-                            <a href="../news/index.html">News</a>
-                        </li>
-                    </ul>
-                </div>
-                <nav class="navbar-collapse collapse" role="navigation">
-                    <ul id="navbar" class="nav nav-tabs">
-                        <li role="presentation"><a href="../index.html">Home</a>
-                        </li>
-                        <li role="presentation" class="dropdown"><a class=" active dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">Fantasy<span class="caret"></span></a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="../Fantasy/index.html">Team Creator</a>
-                                </li>
-                                <li class="active"><a href="../Fantasy/playercompare.html">Player Comparison</a>
-                                </li>
-
-                            </ul>
-                        </li>
-                        <li role="presentation"><a href="../news/index.html">News</a>
-                        </li>
-                    </ul>
-                </nav>
+                <a href="../index.html" class="navbar-brand">
+                    <img id="esbrand" alt="everything sports brand" src="../img/temp%20(1).png">
+                </a>
             </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="../index.html">Home</a>
+                    </li>
+                    <li><a href="/index.html">Team Creator</a>
+                    </li>
+                    <li class="active"><a href="playercompare.html">Player Comparison</a>
+                    </li>
+                </ul>
+            </div>
+            <!--/.nav-collapse -->
+        </div>
+    </div>
+    <main class="container">
+        <header>
         </header>
         <section>
-            <h1>Fantasy Module</h1>
-            <h2>PlayerComparison</h2>
+            <h1>PlayerComparison</h1>
         </section>
 
         <section>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="btn-group">
+                        <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle" type="button">Categories<span class="caret"></span>
+                        </button>
+                        <ul role="menu" class="dropdown-menu">
+                            <li class="btn btn-custom" ng-click="setTrackedCats(0)">Offensive Stats
+                            </li>
+                            <li class="btn btn-custom" ng-click="setTrackedCats(2)">Defensive Stats
+                            </li>
+                            <li class="btn btn-custom active" ng-click="setTrackedCats(3)">Shot Percentages
+                            </li>
+                            <li class="btn btn-custom" ng-click="setTrackedCats(1)">Rebounds, Assist, Points
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="btn-group">
+                        <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle" type="button">Group By<span class="caret"></span>
+                        </button>
+                        <ul role="menu" class="dropdown-menu">
+                            <li class="btn btn-custom" ng-click="setGroupBy('stat')">Statistic
+                            </li>
+                            <li class="btn btn-custom" ng-click="setGroupBy('player')">Player
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            </div>
+
             <form class="navbar-form" role="search">
                 <input type="text" id="playersearch" class="form-control" list="playerlist" ng-click="search()" placeholder="Search for player!">
                 <datalist id="playerlist">
@@ -73,42 +85,9 @@
                 </datalist>
                 <button ng-click="addPlayer()" type="submit" class="btn btn-custom">Add Player!</button>
                 <button ng-hide="empty()" ng-click="createGraph()" type="submit" class="btn btn-custom">Compare players!</button>
-                <div class="dropdown">
-                    <button class="btn btn-custom dropdown-toggle" type="button" id="dropdownMenu" data-toggle="dropdown" aria-expanded="true">Categories to Compare<span class="caret"></span>
-                    </button>
 
-                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-                        <li>
-                            <button class="btn btn-custom" ng-click="setTrackedCats(0)">Offensive Stats</button>
-                        </li>
-                        <li>
-                            <button class="btn btn-custom" ng-click="setTrackedCats(2)">Defensive Stats</button>
-                        </li>
-                        <li>
-                            <button class="btn btn-custom active" ng-click="setTrackedCats(3)">Shot Percentages</button>
-                        </li>
-                        <li>
-                            <button class="btn btn-custom" ng-click="setTrackedCats(1)">Rebounds, Assist, Points</button>
-                        </li>
-                    </ul>
-                </div>
-                <div class="dropdown">
-                    <button class="btn btn-custom dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">Group By<span class="caret"></span>
-                    </button>
-
-                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-                        <li>
-                            <button class="btn btn-custom" ng-click="setGroupBy('stat')">Statistic</button>
-                        </li>
-                        <li>
-                            <button class="btn btn-custom" ng-click="setGroupBy('player')">Player</button>
-                        </li>
-                    </ul>
-                </div>
-
-
-                <h2 ng-hide="empty()">Players To Be Compared:</h2>
-                <h3 ng-hide="empty()">Click to Delete</h3>
+                <h3 ng-hide="empty()">Players To Be Compared:</h3>
+                <p ng-hide="empty()">Click to Delete</p>
                 <ul>
                     <li id="comparedplayers" ng-repeat="player in players" ng-click="deletePlayer(player)">{{player.name }}</li>
                 </ul>
