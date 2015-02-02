@@ -8,62 +8,43 @@
     <meta name="description" content="Home page for Fantasy">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/main.css">
-
+    <link rel="stylesheet" href="../css/dist/css/flat-ui.css">
+    <link rel="stylesheet" href="../css/main1.css">
     <title>Fantasy Sports</title>
 
 </head>
 
 <body ng-app="Fantasy" ng-controller="TeamController">
-    <main class="container-fluid">
-        <header class="navbar navbar-static-top">
-            <a href="../index.html" class="navbar-brand">
-                <img id="esbrand" alt="everything sports brand" src="../img/temp%20(1).png">
-            </a>
+    <div class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="container">
             <div class="navbar-header">
-                <button id="navbutton" type="button" class="navbar-toggle collapsed glyphicon glyphicon-align-justify" data-toggle="collapse" data-target="#mobile-nav"> <span class="sr-only">Toggle navigation</span>
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
                 </button>
-                <div id="mobile-nav" class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav mobilenav">
-                        <li>
-                            <a href="../index.html">Home Page</a>
-                        </li>
-                        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">Fantasy<span class="caret"></span></a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="/Fantasy/index.html">Team Creator</a>
-                                </li>
-                                <li><a href="/Fantasy/playercompare.html">Player Comparison</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="/news/index.html">News</a>
-                        </li>
-                    </ul>
-                </div>
-                <nav class="navbar-collapse collapse" role="navigation">
-                    <ul id="navbar" class="nav nav-tabs">
-                        <li role="presentation"><a href="../index.html">Home</a>
-                        </li>
-                        <li role="presentation" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">Fantasy<span class="caret"></span></a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li class="active"><a href="../Fantasy/index.html">Team Creator</a>
-                                </li>
-                                <li><a href="../Fantasy/playercompare.html">Player Comparison</a>
-                                </li>
-
-                            </ul>
-                        </li>
-                        <li role="presentation"><a href="../news/index.html">News</a>
-                        </li>
-                    </ul>
-                </nav>
+                <a href="../index.html" class="navbar-brand">
+                    <img id="esbrand" alt="everything sports brand" src="../img/temp%20(1).png">
+                </a>
             </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="../index.html">Home</a>
+                    </li>
+                    <li class="active"><a href="index.html">Team Creator</a>
+                    </li>
+                    <li><a href="playercompare.html">Player Comparison</a>
+                    </li>
+                </ul>
+            </div>
+            <!--/.nav-collapse -->
+        </div>
+    </div>
+    <main class="container">
+        <header>
         </header>
 
         <section id="teaminput">
             <h1>Fantasy Module</h1>
-            <h2>Team Creator</h2>
+            <h3>Team Creator</h3>
             <form class="navbar-form" role="search">
                 <input type="text" id="playersearch" class="form-control" list="playerlist" ng-click="search()" placeholder="Search for player!">
                 <datalist id="playerlist">
@@ -71,8 +52,7 @@
                 </datalist>
                 <button ng-click="addPlayer()" type="submit" class="btn btn-custom">Add player!</button>
             </form>
-            <h2>Copy and Paste Team Here!</h2>
-            <textarea class="form-control" rows="8" cols="2" type="text" name="comment" id="team" placeholder="Your team here!"></textarea>
+            <textarea class="form-control" rows="8" cols="2" type="text" name="comment" id="team" placeholder="Copy and Paste Team Here!"></textarea>
             <div id="teambuttons" class="form-group">
                 <button class="btn btn-custom" ng-click="refreshPlayerList()" id="submit">Make My Team!</button>
                 <button class="btn btn-custom" ng-click="clearTeam()" id="submit">Clear Team!</button>
