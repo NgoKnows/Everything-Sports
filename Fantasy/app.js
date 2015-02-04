@@ -247,7 +247,7 @@ angular.module('Fantasy', [])
                     left: 60
                 },
                 width = 1500 - margin.left - margin.right,
-                height = 700 - margin.top - margin.bottom;
+                height = 600 - margin.top - margin.bottom;
             var x0 = d3.scale.ordinal()
                 .rangeRoundBands([0, width], .1);
             var x1 = d3.scale.ordinal();
