@@ -50,7 +50,7 @@
                 <datalist id="playerlist">
                     <option ng-repeat="playerName in dataListPlayers">{{playerName}}</option>
                 </datalist>
-                <button ng-click="addPlayer()" type="submit" class="btn btn-custom">Add player!</button>
+                <button ng-click="addPlayer()" type="button" ng-click="deletePlayer(player)" class="btn btn-primary">Add Player</button>
             </form>
             <textarea class="form-control" rows="8" cols="2" type="text" name="comment" id="team" placeholder="Copy and Paste Team Here!"></textarea>
             <div id="teambuttons" class="form-group">
@@ -76,7 +76,7 @@
                 <thead>
                     <tr>
                         <th>Name</th>
-                        <th id="categories" ng-repeat="cat in statCats" ng-hide="isHidden(cat)" ng-click="sortBy(cat)">{{cat}}</th>
+                        <th id="categories" class="statcol" ng-repeat="cat in statCats" ng-hide="isHidden(cat)" ng-click="sortBy(cat)">{{cat}}</th>
                         <th>Remove</th>
                     </tr>
                 </thead>
@@ -85,7 +85,7 @@
                         <td>{{player.name}}</td>
                         <td ng-mouseover="hoverOverCol()" ng-repeat="stat in player.stats track by $index" ng-hide="hiddenStat($index)">{{stat}}</td>
                         <td>
-                            <input type="checkbox" ng-click="deletePlayer(player)">
+                            <button type="button" ng-click="deletePlayer(player)" class="btn btn-danger">Remove</button>
                         </td>
                     </tr>
 
