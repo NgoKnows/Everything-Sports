@@ -1,7 +1,30 @@
-.navbar-brand{
+.navbar-brand {
     padding-top: 0;
 }
-#playerlist{
+
+#playerlist {
     max-height: 10em;
     overflow-y: scroll;
+}
+
+#comparemain {
+    margin-left: 10em;
+    margin-right: 10em;
+}
+
+.remove:hover {
+    cursor: pointer;
+}
+
+.remove.btn {
+    text-decoration: underline;
+    margin-left: 0.5em;
+    margin-bottom: 0.7em;
+}
+
+img:hover {
+    opacity: 0.7;
+}
+.statcol{
+    cursor: pointer;
 }
