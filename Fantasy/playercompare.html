@@ -31,7 +31,7 @@
                 <ul class="nav navbar-nav">
                     <li><a href="../index.html">Home</a>
                     </li>
-                    <li><a href="/index.html">Team Creator</a>
+                    <li><a href="index.html">Team Creator</a>
                     </li>
                     <li class="active"><a href="playercompare.html">Player Comparison</a>
                     </li>
@@ -40,7 +40,7 @@
             <!--/.nav-collapse -->
         </div>
     </div>
-    <main class="container">
+    <main id="comparemain">
         <header>
         </header>
         <section>
@@ -87,9 +87,8 @@
                 <button ng-hide="empty()" ng-click="createGraph()" type="submit" class="btn btn-custom">Compare players!</button>
 
                 <h3 ng-hide="empty()">Players To Be Compared:</h3>
-                <p ng-hide="empty()">Click to Delete</p>
                 <ul>
-                    <li id="comparedplayers" ng-repeat="player in players" ng-click="deletePlayer(player)">{{player.name }}</li>
+                    <li class="comparedplayers" ng-repeat="player in players">{{player.name}} <span> </span> <button ng-click="deletePlayer(player)" type="button" class="btn btn-danger remove">Remove</button></li>
                 </ul>
         </section>
         </section>
