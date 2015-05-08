@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <meta name="description" content="Home page for Fantasy">
-
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/dist/css/flat-ui.css">
     <link rel="stylesheet" href="../css/main1.css">
@@ -45,27 +44,28 @@
         <section id="teaminput">
             <h1>Fantasy Module</h1>
             <h3>Team Creator</h3>
-            <form class="navbar-form" role="search">
-                <input type="text" id="playersearch" class="form-control" list="playerlist" ng-click="search()" placeholder="Search for player!">
+            <form id="teamForm" class="navbar-form" role="search">
+                <input type="text" id="playersearch" class="form-control teamForm" list="playerlist" ng-click="search()" placeholder="Search for player!">
+
                 <datalist id="playerlist">
                     <option ng-repeat="playerName in dataListPlayers">{{playerName}}</option>
                 </datalist>
-                <button ng-click="addPlayer()" type="button" ng-click="deletePlayer(player)" class="btn btn-primary">Add Player</button>
+                <button ng-click="addPlayer()" type="button" ng-click="deletePlayer(player)" class="btn btn-primary teamForm">Add Player</button>
             </form>
-            <textarea class="form-control" rows="8" cols="2" type="text" name="comment" id="team" placeholder="Copy and Paste Team Here!"></textarea>
+            <textarea class="form-control" rows="12" cols="2" type="text" name="comment" id="team" placeholder="Copy and Paste Team Here!"></textarea>
             <div id="teambuttons" class="form-group">
-                <button class="btn btn-custom" ng-click="refreshPlayerList()" id="submit">Make My Team!</button>
-                <button class="btn btn-custom" ng-click="clearTeam()" id="submit">Clear Team!</button>
+                <button class="btn btn-custom teamButton" ng-click="refreshPlayerList()" id="submit">Make My Team!</button>
+                <button class="btn btn-custom teamButton" ng-click="clearTeam()" id="submit">Clear Team!</button>
             </div>
         </section>
-        <section>
+        <section class="ng-cloak">
             <div class="dropdown dropup" ng-hide="empty()">
-                <button class="btn btn-custom dropdown-toggle" type="button" id="dropdownMenu" data-toggle="dropdown" aria-expanded="true">Hide Categories<span class="caret"></span>
+                <button class="btn btn-custom dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="true">Hide Categories<span class="caret"></span>
                 </button>
-                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-                    <li ng-repeat="cat in statCats">
-                        <label>{{cat}}
-                            <input type="checkbox" ng-click="toggleHide(cat)" ng-checked="isHidden(cat)">
+                <ul class="dropdown-menu" role="menu" id="dropdownMenu" aria-labelledby="dropdownMenu">
+                    <li ng-repeat="cat in statCats" ng-class="{ hover: isHidden(cat) }">
+                        <label class="catLabel">{{cat}}
+                            <input type="checkbox" class="catCheck" ng-click="toggleHide(cat)" ng-checked="isHidden(cat)">
                         </label>
                     </li>
                 </ul>
@@ -76,7 +76,7 @@
                 <thead>
                     <tr>
                         <th>Name</th>
-                        <th id="categories" class="statcol" ng-repeat="cat in statCats" ng-hide="isHidden(cat)" ng-click="sortBy(cat)">{{cat}}</th>
+                        <th id="categories" class="statcol" ng-repeat="cat in statCats" ng-hide="isHidden(cat)" ng-click="sortBy(cat)" ng-class="{ hover: curCol == $index }">{{cat}}</th>
                         <th>Remove</th>
                     </tr>
                 </thead>
@@ -88,14 +88,10 @@
                             <button type="button" ng-click="deletePlayer(player)" class="btn btn-danger">Remove</button>
                         </td>
                     </tr>
-
                 </tbody>
-
             </table>
-
         </section>
     </main>
-
 
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.2/angular.min.js"></script>
