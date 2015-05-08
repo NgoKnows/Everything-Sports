@@ -1,3 +1,15 @@
+.ng-cloak {
+    display: none;
+}
+.navbar-nav > li > a{
+    font-weight: 900;
+}
+
+#esbrand {
+    padding-top: 0.5em;
+    width: 5.25em;
+}
+
 .navbar-brand {
     padding-top: 0;
 }
@@ -25,6 +37,94 @@
 img:hover {
     opacity: 0.7;
 }
-.statcol{
+
+.statcol {
     cursor: pointer;
+}
+
+#catButton {
+    margin-right: 0.5em;
+}
+
+#addButton {
+    margin-left: 0.25em;
+}
+
+.hover {
+    background-color: #C7C7C7;
+}
+
+#team {
+    margin-bottom: 1em;
+}
+
+#playersearch {
+    width: 50%;
+}
+
+.teamForm {
+    margin-bottom: 5px;
+    margin-right: 10px;
+}
+
+#teamForm {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+@media (min-width: 280px) {
+    #esbrand {
+        width: 6em;
+    }
+}
+
+@media (min-width: 320px) {
+    #esbrand {
+        width: 7em;
+    }
+}
+
+@media (min-width: 415px) {
+    #esbrand {
+        padding-top: 0;
+        width: 11em;
+    }
+}
+@media (min-width: 1024px) {
+    .navbar-nav > li > a {
+        font-size: 20px;
+    }
+}
+@media (min-width: 1224px) {
+    .navbar-nav > li > a {
+        font-size: 22px;
+    }
+}
+.teamButton {
+    margin-bottom: 0.5em;
+    margin-right: 5px;
+}
+
+#dropdownMenu {
+   height: 250px;
+   overflow: auto;
+    opacity: 0.925;
+}
+
+.catLabel {
+    width: 75%;
+    margin-left: 10px;
+}
+
+.catCheck {
+    float: right;
+}
+
+#listWrap {
+    max-height: 10em;
+    overflow-y: scroll;
+}
+
+#graph {
+    margin-left: auto;
+    margin-right: auto;
 }
