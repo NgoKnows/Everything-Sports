@@ -41,18 +41,15 @@ angular.module('Fantasy', [])
             if ($scope.dataListPlayers == undefined) {
                 $scope.dataListPlayers == dataListPlayers;
             }
-            console.log('hi');
         }
         $scope.addPlayer = function () {
             var player = [$("#playersearch").val()];
             var newPlayer = getPlayerList(player);
             if ($.inArray(player, playerList) == -1) {
-                console.log('here');
                 $scope.players.push(newPlayer[0]);
             }
         }
         $scope.getTotal = function (stat, index) {
-            console.log(stat);
             if ($.inArray(stat, ["PG", "SG", "SF", "PF", "C"] == -1)) {
                 $scope.totals[index] += parseFloat(stat);
             }
@@ -60,10 +57,10 @@ angular.module('Fantasy', [])
         }
         $scope.deletePlayer = function (player) {
             console.log(player);
-            var indexOfPlayer = $.inArray(player, playerList)
-            playerList.splice(indexOfPlayer, 1);
+            var indexOfPlayer = $.inArray(player, playerList);
+            $scope.players.splice(indexOfPlayer, 1);
 
-            $scope.players = playerList;
+            //$scope.players = playerList;
         }
         $scope.clearTeam = function () {
             console.log(dataListPlayers);
@@ -117,7 +114,6 @@ angular.module('Fantasy', [])
             }
         }
         $scope.empty = function () {
-            //console.log($scope.players);
             if ($scope.players == undefined || $scope.players.length == 0) {
                 return true;
             }
@@ -134,15 +130,20 @@ angular.module('Fantasy', [])
         $scope.groupBy = "stat";
         $scope.addPlayer = function () {
             var player = [$("#playersearch").val()];
-            var newPlayer = getPlayerList(player);
-            if ($.inArray(player, playerList) == -1) {
-                $scope.players.push(newPlayer[0]);
+            if (player[0]) {
+                var newPlayer = getPlayerList(player);
+                if ($.inArray(player, playerList) == -1) {
+                    $scope.players.push(newPlayer[0]);
+                    $scope.dataListPlayers.splice(dataListPlayers.indexOf(player[0]), 1);
+                    $("#playersearch").val("");
+                    console.log($scope.dataListPlayers);
+                }
+                console.log($scope.players);
             }
-            console.log($scope.players);
         }
         $scope.search = function () {
-            if ($scope.dataListPlayers == undefined) {
-                $scope.dataListPlayers == dataListPlayers;
+            if ($scope.dataListPlayers === undefined) {
+                $scope.dataListPlayers = dataListPlayers;
             }
         }
         $scope.empty = function () {
@@ -153,9 +154,10 @@ angular.module('Fantasy', [])
 
         }
         $scope.deletePlayer = function (player) {
-            console.log(player);
             var indexOfPlayer = $.inArray(player, playerList)
+            console.log(dataListPlayers);
             $scope.players.splice(indexOfPlayer, 1);
+            $scope.dataListPlayers.push(player.name);
         }
         $scope.getFormattedPlayers = function () {
             var data = [];
@@ -247,7 +249,7 @@ angular.module('Fantasy', [])
                     left: 60
                 },
                 width = 1500 - margin.left - margin.right,
-                height = 600 - margin.top - margin.bottom;
+                height = 500 - margin.top - margin.bottom;
             var x0 = d3.scale.ordinal()
                 .rangeRoundBands([0, width], .1);
             var x1 = d3.scale.ordinal();
