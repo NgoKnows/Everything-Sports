@@ -1,62 +1,20 @@
-<!doctype html>
-<html lang="en">
+<main class="container" class="ng-cloak" ng-controller="CompareController">
+    <header>
+    </header>
+    <section>
+        <h1>PlayerComparison</h1>
+    </section>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <section>
 
-    <meta name="description" content="Home page for Fantasy">
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/dist/css/flat-ui.css">
-
-    <link rel="stylesheet" href="../css/main1.css">
-
-    <title>Fantasy Sports</title>
-
-</head>
-
-<body class="ng-cloak" ng-app="Fantasy" ng-controller="CompareController">
-    <div class="navbar navbar-default navbar-static-top" role="navigation">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                </button>
-                <a href="../index.html" class="navbar-brand">
-                    <img id="esbrand" alt="everything sports brand" src="../img/temp%20(1).png">
-                </a>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a href="../index.html">Home</a>
-                    </li>
-                    <li><a href="index.html">Team Creator</a>
-                    </li>
-                    <li class="active"><a href="playercompare.html">Player Comparison</a>
-                    </li>
-                </ul>
-            </div>
-            <!--/.nav-collapse -->
-        </div>
-    </div>
-    <main class="container">
-        <header>
-        </header>
-        <section>
-            <h1>PlayerComparison</h1>
-        </section>
-
-        <section>
-
-            <form class="navbar-form" role="search">
-                <input type="text" id="playersearch" class="form-control" list="playerlist" ng-click="search()" placeholder="Search for player!">
-                <datalist id="playerlist">
-                    <option ng-repeat="playerName in dataListPlayers">{{playerName}}</option>
-                </datalist>
-                <button ng-click="addPlayer()" type="submit" class="btn btn-custom" id="addButton">Add Player!</button>
-                <button ng-hide="empty()" ng-click="createGraph()" type="submit" class="btn btn-custom">Compare players!</button>
-                <div class="row">
+        <form class="navbar-form" role="search">
+            <input type="text" id="playersearch" class="form-control" list="playerlist" ng-click="search()" placeholder="Search for player!">
+            <datalist id="playerlist">
+                <option ng-repeat="playerName in dataListPlayers">{{playerName}}</option>
+            </datalist>
+            <button ng-click="addPlayer()" type="submit" class="btn btn-custom" id="addButton">Add Player!</button>
+            <button ng-hide="empty()" ng-click="createGraph()" type="submit" class="btn btn-custom">Compare players!</button>
+            <div class="row">
                 <div class="col-md-12" id="catGroup">
                     <div class="btn-group">
                         <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle" type="button" id="catButton">Categories<span class="caret"></span>
@@ -84,20 +42,11 @@
                     </div>
                 </div>
             </div>
-                <h3 ng-hide="empty()">Players To Be Compared:</h3>
-                <ul>
-                    <li class="comparedplayers" ng-repeat="player in players">{{player.name}} <span> </span>
-                        <button ng-click="deletePlayer(player)" type="button" class="btn btn-danger remove">Remove</button>
-                    </li>
-                </ul>
-        </section>
-    </main>
-    <section id="graph"></section>
-    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.2/angular.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
-    <script src="http://d3js.org/d3.v3.min.js"></script>
-    <script src="player.js"></script>
-    <script src="app.js"></script>
-</body>
+            <h3 ng-hide="empty()">Players To Be Compared:</h3>
+            <ul>
+                <li class="comparedplayers" ng-repeat="player in players">{{player.name}} <span> </span>
+                    <button ng-click="deletePlayer(player)" type="button" class="btn btn-danger remove">Remove</button>
+                </li>
+            </ul>
+    </section>
+</main>
