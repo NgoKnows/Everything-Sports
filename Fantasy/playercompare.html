@@ -48,35 +48,6 @@
         </section>
 
         <section>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="btn-group">
-                        <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle" type="button" id="catButton">Categories<span class="caret"></span>
-                        </button>
-                        <ul role="menu" class="dropdown-menu">
-                            <li class="btn btn-custom" ng-click="setTrackedCats(0)">Offensive Stats
-                            </li>
-                            <li class="btn btn-custom" ng-click="setTrackedCats(2)">Defensive Stats
-                            </li>
-                            <li class="btn btn-custom active" ng-click="setTrackedCats(3)">Shot Percentages
-                            </li>
-                            <li class="btn btn-custom" ng-click="setTrackedCats(1)">Rebounds, Assist, Points
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="btn-group">
-                        <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle" type="button">Group By<span class="caret"></span>
-                        </button>
-                        <ul role="menu" class="dropdown-menu">
-                            <li class="btn btn-custom" ng-click="setGroupBy('stat')">Statistic
-                            </li>
-                            <li class="btn btn-custom" ng-click="setGroupBy('player')">Player
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            </div>
 
             <form class="navbar-form" role="search">
                 <input type="text" id="playersearch" class="form-control" list="playerlist" ng-click="search()" placeholder="Search for player!">
@@ -85,12 +56,40 @@
                 </datalist>
                 <button ng-click="addPlayer()" type="submit" class="btn btn-custom" id="addButton">Add Player!</button>
                 <button ng-hide="empty()" ng-click="createGraph()" type="submit" class="btn btn-custom">Compare players!</button>
-
+                <div class="row">
+                <div class="col-md-12" id="catGroup">
+                    <div class="btn-group">
+                        <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle" type="button" id="catButton">Categories<span class="caret"></span>
+                        </button>
+                        <ul role="menu" class="dropdown-menu buttonList">
+                            <li ng-class="{ selected: trackedNum === 0 }" class="btn btn-custom" ng-click="setTrackedCats(0)">Offensive Stats
+                            </li>
+                            <li ng-class="{ selected: trackedNum === 2 }" class="btn btn-custom" ng-click="setTrackedCats(2)">Defensive Stats
+                            </li>
+                            <li ng-class="{ selected: trackedNum === 3 }" class="btn btn-custom active" ng-click="setTrackedCats(3)">Shot Percentages
+                            </li>
+                            <li ng-class="{ selected: trackedNum === 1 }" class="btn btn-custom" ng-click="setTrackedCats(1)">Rebounds, Assist, Points
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="btn-group">
+                        <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle" type="button">Group By<span class="caret"></span>
+                        </button>
+                        <ul role="menu" class="dropdown-menu buttonList">
+                            <li ng-class="{ selected: groupBy === 'stat' }" class="btn btn-custom" ng-click="setGroupBy('stat')">Statistic
+                            </li>
+                            <li ng-class="{ selected: groupBy === 'player' }" class="btn btn-custom" ng-click="setGroupBy('player')">Player
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
                 <h3 ng-hide="empty()">Players To Be Compared:</h3>
                 <ul>
-                    <li class="comparedplayers" ng-repeat="player in players">{{player.name}} <span> </span> <button ng-click="deletePlayer(player)" type="button" class="btn btn-danger remove">Remove</button></li>
+                    <li class="comparedplayers" ng-repeat="player in players">{{player.name}} <span> </span>
+                        <button ng-click="deletePlayer(player)" type="button" class="btn btn-danger remove">Remove</button>
+                    </li>
                 </ul>
-        </section>
         </section>
     </main>
     <section id="graph"></section>
