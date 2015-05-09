@@ -8,30 +8,29 @@ var playerList;
 var dataListPlayers = getDataList();
 var statCats = ["POS", "G", "GS", "MP", "FG", "FGA", "FG%", "3P", "3PA", "3P%", "2P", "2PA", "2P%", "FT", "FTA", "FT%", "ORB", "DRB", "TRB", "AST", "STL", "BLK", "TOV", "PF", "PTS"];
 
-angular.module('Fantasy', [])
-angular.module('app.routes', ['ngRoute'])
+angular.module('Fantasy', ['ngRoute', 'ngAnimate'])
 
-.config(function ($routeProvider, $locationProvider) {
+.config(function ($routeProvider) {
 
-    $routeProvider
+        $routeProvider
 
-    // route for the home page
-        .when('/', {
-            templateUrl: '../index.html',
-        })
-        .when('/Fantasy/Team', {
-            templateUrl: 'index.html',
-        })
-        //login page
-        .when('/Fantasy/Compare', {
-            templateUrl: 'playercompare.html',
-        })
-        .otherwise({
-            redirectTo: '/'
-        });
-})
-    //$locationProvider.html5Mode(true);
-.controller('TeamController', function ($scope) {
+        // route for the home page
+            .when('/', {
+                templateUrl: 'Fantasy/home.html',
+            })
+            .when('/Fantasy/Team', {
+                templateUrl: 'Fantasy/index.html',
+            })
+            //login page
+            .when('/Fantasy/Compare', {
+                templateUrl: 'Fantasy/playercompare.html',
+            })
+            .otherwise({
+                redirectTo: '/'
+            });
+    })
+    .controller('TeamController', function ($scope) {
+        console.log("OKAY WEIRDS");
         $scope.players = [];
         $scope.sortCat = 'POS';
         $scope.dataListPlayers = getDataList();
@@ -39,6 +38,10 @@ angular.module('app.routes', ['ngRoute'])
                      "2P%", "FT", "FTA", "FT%", "ORB", "DRB", "TRB", "AST", "STL",
                      "BLK", "TOV", "PF", "PTS"];
         $scope.hiddenCats = ["2P", "2PA", "3P", "3PA", "3P%"];
+        $scope.intialize = function () {
+            $('#teamLink').addClass("active");
+        }
+        $scope.intialize();
         $scope.refreshPlayerList = function () {
             getTeam();
             $scope.players = playerList;
@@ -148,6 +151,10 @@ angular.module('app.routes', ['ngRoute'])
         $scope.trackedCats = ["FG", "FGA", "FG%"];
         $scope.trackedNum = 0;
         $scope.groupBy = "stat";
+        $scope.intialize = function () {
+            $('#compareLink').addClass("active");
+        }
+        $scope.intialize();
         $scope.addPlayer = function () {
             var player = [$("#playersearch").val()];
             if (player[0]) {
@@ -253,8 +260,6 @@ angular.module('app.routes', ['ngRoute'])
             }
 
         }
-
-
         $scope.createGraph = function () {
             d3.select("svg")
                 .remove();
@@ -292,7 +297,7 @@ angular.module('app.routes', ['ngRoute'])
                 .attr("width", width + margin.left + margin.right)
                 .attr("height", height + margin.top + margin.bottom)
                 .append("g")
-                .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+                .attr("transform", "translate(" + margin.left + "," + (parseInt(margin.top) + 1) + ")");
 
             var catNames = d3.keys(data[0]).filter(function (key) {
                 return key !== "name" && key != "stats";
@@ -379,5 +384,32 @@ angular.module('app.routes', ['ngRoute'])
                 .text(function (a) {
                     return a;
                 });
+            $scope.hoverPlayer();
         };
+        $scope.hoverPlayer = function () {
+            var players = $('.legend');
+            console.log(players);
+            var color;
+            angular.forEach(players, function (player) {
+                color = (player.children[0].attributes.style.value.substring(6));
+                color = color.substr(0, color.length - 1)
+                var matchedRect = $('rect').filter(function () {
+                    return $(this).css('fill') == color;
+                });
+                matchedRect.hover(function () {
+                    console.log(matchedRect);
+                    if($(matchedRect[0]).attr('opacity') == 0.75){
+                        matchedRect.attr('opacity', 1);
+                    }else{
+                    matchedRect.attr('opacity', 0.75);
+                    }
+                });
+            });
+        };
+    })
+    .controller("HomeController", function ($scope) {
+        $scope.intialize = function () {
+            $('#homeLink').addClass("active");
+        }
+        $scope.intialize();
     });
