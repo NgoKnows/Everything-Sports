@@ -27,57 +27,49 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/dist/css/flat-ui.css">
+    <link rel="stylesheet" href="css/animate.min.css">
     <link rel="stylesheet" href="css/main1.css">
 
     <title>Everything Sports</title>
 
 </head>
 
-<body>
+<body ng-app="Fantasy">
     <div class="navbar navbar-default navbar-static-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
                 </button>
-                <a href="index.html" class="navbar-brand">
+                <a href="#home" class="navbar-brand">
                     <img id="esbrand" alt="everything sports brand" src="img/temp%20(1).png">
                 </a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="index.html">Home</a>
+                    <li id="homeLink" class="headLink"><a href="#home">Home</a>
                     </li>
-                    <li><a href="Fantasy/index.html">Team Creator</a>
+                    <li id="teamLink" class="headLink"><a href="#Fantasy/Team">Team Creator</a>
                     </li>
-                    <li><a href="Fantasy/playercompare.html">Player Comparison</a>
+                    <li id="compareLink" class="headLink"><a href="#Fantasy/Compare">Player Comparison</a>
                     </li>
                 </ul>
             </div>
-            <!--/.nav-collapse -->
         </div>
     </div>
-    <main class="container">
-        <header>
+    <main ng-view class="container">
 
-        </header>
-        <div class="homepage">
-            <h1>Everything Sports</h1>
-            <h5>This is a fantasy basketball sports website, meant to provide tools for the savvy fantasy player!</h5>
-        </div>
-
-        <div class="homepage">
-
-            <br>
-            <h2>Team Creator:</h2>
-            <h5>Allows you to copy and paste your team straight from your fantasy team page and copy all that text into the team creator. The team creator will grab all your players from that text and give you a table with all your players which you can sort, remove, and add from. Gives you an easy way to view your fantasy teams!</h5>
-            <a href="http://www.fleaflicker.com/nba/team?leagueId=14203&teamId=88334">Sample Fantasy Team!</a>
-            <h2>Player Comparison:</h2>
-            <h5>Allows you to compare players stats visually, you can add as many players as you like and compare them on stats such as shot percentages, offensive stats, defensive stats, and more!</h5>
-            </section>
-        </div>
     </main>
+    <section id="graph"></section>
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="https://code.angularjs.org/1.3.9/angular.min.js"></script>
+    <script src="https://code.angularjs.org/1.3.9/angular-route.min.js"></script>
+    <script src="https://code.angularjs.org/1.3.9/angular-animate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="Fantasy/player.js"></script>
+    <script src="Fantasy/app.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 </body>
+
+</html>
