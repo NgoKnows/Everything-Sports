@@ -133,9 +133,10 @@ input.catCheck {
 }
 
 #graph {
-    margin-left: 5em;
+    margin-left: 7.5vw;
     margin-right: auto;
 }
+
 #catDropUp {
     margin-bottom: 0.5em;
 }
@@ -150,8 +151,23 @@ input.catCheck {
 }
 
 #test {
-    font-weight:900;
-}
-.selected{
     font-weight: 900;
+}
+
+.selected {
+    font-weight: 900;
+}
+
+.graphHover {
+    opacity: 0.75;
+}
+
+.ng-enter {
+    -webkit-animation: fadeIn .7s ease-in;
+    animation: fadeIn 0.7s ease-in;
+}
+
+.ng-leave {
+    animation: fadeOut 0.15s ease-in;
+    -webkit-animation: fadeOut .15s ease-in;
 }
