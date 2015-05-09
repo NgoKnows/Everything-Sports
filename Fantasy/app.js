@@ -30,7 +30,6 @@ angular.module('Fantasy', ['ngRoute', 'ngAnimate'])
             });
     })
     .controller('TeamController', function ($scope) {
-        console.log("OKAY WEIRDS");
         $scope.players = [];
         $scope.sortCat = 'POS';
         $scope.dataListPlayers = getDataList();
