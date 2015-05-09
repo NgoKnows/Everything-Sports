@@ -78,3 +78,9 @@ function getDataList() {
         });
     return playerDataList;
 }
+$(function(){
+    $('.headLink').click(function(){
+        $('.headLink').removeClass("active");
+        $(this).addClass("active");
+    })
+});
