@@ -9,7 +9,29 @@ var dataListPlayers = getDataList();
 var statCats = ["POS", "G", "GS", "MP", "FG", "FGA", "FG%", "3P", "3PA", "3P%", "2P", "2PA", "2P%", "FT", "FTA", "FT%", "ORB", "DRB", "TRB", "AST", "STL", "BLK", "TOV", "PF", "PTS"];
 
 angular.module('Fantasy', [])
-    .controller('TeamController', function ($scope) {
+angular.module('app.routes', ['ngRoute'])
+
+.config(function ($routeProvider, $locationProvider) {
+
+    $routeProvider
+
+    // route for the home page
+        .when('/', {
+            templateUrl: '../index.html',
+        })
+        .when('/Fantasy/Team', {
+            templateUrl: 'index.html',
+        })
+        //login page
+        .when('/Fantasy/Compare', {
+            templateUrl: 'playercompare.html',
+        })
+        .otherwise({
+            redirectTo: '/'
+        });
+})
+    //$locationProvider.html5Mode(true);
+.controller('TeamController', function ($scope) {
         $scope.players = [];
         $scope.sortCat = 'POS';
         $scope.dataListPlayers = getDataList();
@@ -60,11 +82,8 @@ angular.module('Fantasy', [])
             var indexOfPlayer = $.inArray(player, playerList);
             $scope.players.splice(indexOfPlayer, 1);
 
-            //$scope.players = playerList;
         }
         $scope.clearTeam = function () {
-            console.log(dataListPlayers);
-            console.log($scope.dataListPlayers);
             playerList = [];
             $scope.players = playerList;
         }
@@ -127,6 +146,7 @@ angular.module('Fantasy', [])
         $scope.players = [];
         $scope.dataListPlayers = getDataList();
         $scope.trackedCats = ["FG", "FGA", "FG%"];
+        $scope.trackedNum = 0;
         $scope.groupBy = "stat";
         $scope.addPlayer = function () {
             var player = [$("#playersearch").val()];
@@ -136,9 +156,7 @@ angular.module('Fantasy', [])
                     $scope.players.push(newPlayer[0]);
                     $scope.dataListPlayers.splice(dataListPlayers.indexOf(player[0]), 1);
                     $("#playersearch").val("");
-                    console.log($scope.dataListPlayers);
                 }
-                console.log($scope.players);
             }
         }
         $scope.search = function () {
@@ -222,12 +240,16 @@ angular.module('Fantasy', [])
         $scope.setTrackedCats = function (num) {
             if (num == 0) {
                 $scope.trackedCats = ['FG', 'FGA', "3P", "3PA", "FT", "FTA", "PTS"];
+                $scope.trackedNum = 0;
             } else if (num == 1) {
                 $scope.trackedCats = ['TRB', 'AST', 'PTS'];
+                $scope.trackedNum = 1;
             } else if (num == 2) {
                 $scope.trackedCats = ['BLK', 'STL'];
+                $scope.trackedNum = 2;
             } else {
                 $scope.trackedCats = ["FG%", "2P%", "3P%", "FT%"];
+                $scope.trackedNum = 3;
             }
 
         }
