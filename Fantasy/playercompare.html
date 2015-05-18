@@ -8,6 +8,8 @@
     <section>
 
         <form class="navbar-form" role="search">
+            <div ng-show="errorMessage" class="animate-show" id="error">{{errorMessage}}</div>
+
             <input type="text" id="playersearch" class="form-control" list="playerlist" ng-click="search()" placeholder="Search for player!">
             <datalist id="playerlist">
                 <option ng-repeat="playerName in dataListPlayers">{{playerName}}</option>
