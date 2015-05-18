@@ -19,6 +19,17 @@ function getTeam() {
     console.log(playerList);
 };
 
+function getPlayerNameWhole(name){
+    name = name.split(/\s+/);
+    var firstName = name[0];
+    var lastName = name[1]
+    var playerFirstName = firstName.substring(0, 1).toUpperCase() +
+        firstName.substring(1, firstName.length);
+    var playerLastName = lastName.substring(0, 1).toUpperCase() +
+        lastName.substring(1, lastName.length).toLowerCase();
+    var playerName = playerFirstName + ' ' + playerLastName;
+    return playerName;
+}
 
 function getPlayerName(firstName, lastName) {
     var playerFirstName = firstName.substring(0, 1).toUpperCase() +
@@ -40,7 +51,7 @@ function checkIfPlayer(playerName) {
 
 function getPlayerDict() {
     var playerDict1 = {};
-    $.getJSON('../data/data.json')
+    $.getJSON('data/data.json')
         .done(function (data) {
             data.forEach(function (player) {
                 playerDict1[player.name] = player.stats;
@@ -52,6 +63,9 @@ function getPlayerDict() {
 function getPlayerList(playersOnTeam) {
     var playerList1 = [];
     playersOnTeam.forEach(function (player) {
+        if(!playerDict[player]){
+            return null;
+        }
         var curPlayer = {};
         var statCats = ["POS", "G", "GS", "MP", "FG", "FGA", "FG%", "3P", "3PA", "3P%", "2P", "2PA",
                      "2P%", "FT", "FTA", "FT%", "ORB", "DRB", "TRB", "AST", "STL",
@@ -70,7 +84,7 @@ function getPlayerList(playersOnTeam) {
 
 function getDataList() {
     var playerDataList = [];
-    $.getJSON('../data/data.json')
+    $.getJSON('data/data.json')
         .done(function (data) {
             data.forEach(function (player) {
                 playerDataList.push(player.name);
