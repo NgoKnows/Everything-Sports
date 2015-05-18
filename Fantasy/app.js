@@ -10,24 +10,26 @@ var statCats = ["POS", "G", "GS", "MP", "FG", "FGA", "FG%", "3P", "3PA", "3P%", 
 
 angular.module('Fantasy', ['ngRoute', 'ngAnimate'])
 
-.config(function ($routeProvider) {
+.config(function ($routeProvider, $locationProvider) {
 
         $routeProvider
 
         // route for the home page
             .when('/', {
-                templateUrl: 'Fantasy/home.html',
+                templateUrl: 'Fantasy/home.html'
             })
             .when('/Fantasy/Team', {
-                templateUrl: 'Fantasy/index.html',
+                templateUrl: 'Fantasy/index.html'
             })
             //login page
             .when('/Fantasy/Compare', {
-                templateUrl: 'Fantasy/playercompare.html',
+                templateUrl: 'Fantasy/playercompare.html'
             })
             .otherwise({
                 redirectTo: '/'
             });
+//            $locationProvider.html5Mode(true);
+
     })
     .controller('TeamController', function ($scope) {
         $scope.players = [];
@@ -42,18 +44,17 @@ angular.module('Fantasy', ['ngRoute', 'ngAnimate'])
         }
         $scope.intialize();
         $scope.refreshPlayerList = function () {
+            $scope.errorMessage = '';
             getTeam();
             $scope.players = playerList;
         };
         $scope.sortBy = function (sortCat) {
-            console.log(sortCat);
             if ($scope.sortCat == sortCat) {
                 $scope.sortReverse = !$scope.sortReverse;
             } else {
                 $scope.sortCat = sortCat;
                 $scope.sortReverse = false;
             }
-            console.log($scope.sortCat);
         }
         $scope.hoverOverCol = function () {
             $scope.curCol = this.$index;
@@ -67,12 +68,25 @@ angular.module('Fantasy', ['ngRoute', 'ngAnimate'])
             }
         }
         $scope.addPlayer = function () {
-            var player = [$("#playersearch").val()];
+            var player = [getPlayerNameWhole($("#playersearch").val())];
             var newPlayer = getPlayerList(player);
-            if ($.inArray(player, playerList) == -1) {
+            $scope.errorMessage = '';
+
+            var playerNames = $scope.players.map(function(player){
+                return player.name;
+            });
+
+            if(!newPlayer[0]){
+                $scope.errorMessage = "There is no player with that name!"
+            }else if(playerNames.indexOf(newPlayer[0].name)) {
                 $scope.players.push(newPlayer[0]);
+                   $scope.dataListPlayers.splice(dataListPlayers.indexOf(player[0]), 1);
+                $("#playersearch").val("");
+            }else{
+                $scope.errorMessage = "That player is already on the team!"
+                $("#playersearch").val("");
             }
-        }
+        };
         $scope.getTotal = function (stat, index) {
             if ($.inArray(stat, ["PG", "SG", "SF", "PF", "C"] == -1)) {
                 $scope.totals[index] += parseFloat(stat);
@@ -80,9 +94,9 @@ angular.module('Fantasy', ['ngRoute', 'ngAnimate'])
             return stat;
         }
         $scope.deletePlayer = function (player) {
-            console.log(player);
-            var indexOfPlayer = $.inArray(player, playerList);
+            var indexOfPlayer = $.inArray(player, $scope.players);
             $scope.players.splice(indexOfPlayer, 1);
+            $scope.dataListPlayers.push(player.name);
 
         }
         $scope.clearTeam = function () {
@@ -145,6 +159,7 @@ angular.module('Fantasy', ['ngRoute', 'ngAnimate'])
 
     })
     .controller("CompareController", function ($scope) {
+    $scope.test = false;
         $scope.players = [];
         $scope.dataListPlayers = getDataList();
         $scope.trackedCats = ["FG", "FGA", "FG%"];
@@ -155,16 +170,26 @@ angular.module('Fantasy', ['ngRoute', 'ngAnimate'])
         }
         $scope.intialize();
         $scope.addPlayer = function () {
-            var player = [$("#playersearch").val()];
-            if (player[0]) {
-                var newPlayer = getPlayerList(player);
-                if ($.inArray(player, playerList) == -1) {
-                    $scope.players.push(newPlayer[0]);
-                    $scope.dataListPlayers.splice(dataListPlayers.indexOf(player[0]), 1);
+            var player = [getPlayerNameWhole($("#playersearch").val())];
+            console.log("DSFDSF" + " " + player)
+            var newPlayer = getPlayerList(player);
+            $scope.errorMessage = '';
+
+            var playerNames = $scope.players.map(function(player){
+                return player.name;
+            });
+
+            if(!newPlayer[0]){
+                $scope.errorMessage = "There is no player with that name!"
+            }else if(playerNames.indexOf(newPlayer[0].name)) {
+                $scope.players.push(newPlayer[0]);
+                   $scope.dataListPlayers.splice(dataListPlayers.indexOf(player[0]), 1);
                     $("#playersearch").val("");
-                }
+            }else{
+                $scope.errorMessage = "That player is already being compared!"
+                $("#playersearch").val("");
             }
-        }
+        };
         $scope.search = function () {
             if ($scope.dataListPlayers === undefined) {
                 $scope.dataListPlayers = dataListPlayers;
@@ -179,7 +204,6 @@ angular.module('Fantasy', ['ngRoute', 'ngAnimate'])
         }
         $scope.deletePlayer = function (player) {
             var indexOfPlayer = $.inArray(player, playerList)
-            console.log(dataListPlayers);
             $scope.players.splice(indexOfPlayer, 1);
             $scope.dataListPlayers.push(player.name);
         }
@@ -329,7 +353,8 @@ angular.module('Fantasy', ['ngRoute', 'ngAnimate'])
                 svg.append("text")
                     .attr("x", (width / 2) - $scope.players.length * (width / 10))
                     .attr("y", 0 - (margin.top / 2))
-                    .style("font-size", "16px")
+                    .style("font-size", "24px")
+                    .style("font-weight", "bold")
                     .style("text-decoration", "underline")
                     .text($scope.getComparedPlayers());
             }
@@ -366,13 +391,13 @@ angular.module('Fantasy', ['ngRoute', 'ngAnimate'])
                 .enter().append("g")
                 .attr("class", "legend")
                 .attr("transform", function (a, i) {
-                    return "translate(0," + i * 20 + ")";
+                    return "translate(0," + i * 22 + ")";
                 });
 
             legend.append("rect")
                 .attr("x", width - 18)
-                .attr("width", 18)
-                .attr("height", 18)
+                .attr("width", 20)
+                .attr("height", 20)
                 .style("fill", color);
 
             legend.append("text")
@@ -380,6 +405,7 @@ angular.module('Fantasy', ['ngRoute', 'ngAnimate'])
                 .attr("y", 9)
                 .attr("dy", ".35em")
                 .style("text-anchor", "end")
+                .style("font-size", "20px")
                 .text(function (a) {
                     return a;
                 });
@@ -387,24 +413,39 @@ angular.module('Fantasy', ['ngRoute', 'ngAnimate'])
         };
         $scope.hoverPlayer = function () {
             var players = $('.legend');
-            console.log(players);
             var color;
             angular.forEach(players, function (player) {
+                var text = $(player.children[1]);
+                console.log(text);
                 color = (player.children[0].attributes.style.value.substring(6));
                 color = color.substr(0, color.length - 1)
                 var matchedRect = $('rect').filter(function () {
                     return $(this).css('fill') == color;
                 });
                 matchedRect.hover(function () {
-                    console.log(matchedRect);
-                    if($(matchedRect[0]).attr('opacity') == 0.75){
+                    if($(matchedRect[0]).attr('opacity') == 0.6){
                         matchedRect.attr('opacity', 1);
+                        text.css("font-weight", "normal")
                     }else{
-                    matchedRect.attr('opacity', 0.75);
+                        matchedRect.attr('opacity', 0.6);
+                        text.css("font-weight", "bold")
+                    }
+                });
+                text.hover(function () {
+                    console.log(text);
+                    if($(matchedRect[0]).attr('opacity') == 0.6){
+                        matchedRect.attr('opacity', 1);
+                        $(this).css("font-weight", "normal")
+                    }else{
+                        matchedRect.attr('opacity', 0.6);
+                        $(this).css("font-weight", "bold")
                     }
                 });
             });
         };
+        $scope.$on("$destroy", function(){
+            $('#graph').empty();
+        });
     })
     .controller("HomeController", function ($scope) {
         $scope.intialize = function () {
