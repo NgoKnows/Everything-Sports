@@ -6,6 +6,7 @@
             <h1>Fantasy Module</h1>
             <h3>Team Creator</h3>
             <form id="teamForm" class="navbar-form" role="search">
+                <div ng-show="errorMessage" class="animate-show" id="error">{{errorMessage}}</div>
                 <input type="text" id="playersearch" class="form-control teamForm" list="playerlist" ng-click="search()" placeholder="Search for player!">
 
                 <datalist id="playerlist">
@@ -21,7 +22,7 @@
         </section>
         <section class="ng-cloak">
             <div id="catDropUp" class="dropdown dropup" ng-hide="empty()">
-                <button class="btn btn-custom dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="true">Hide Categories<span class="caret"></span>
+                <button class="btn btn-custom dropdown-toggle animate-show" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="true">Hide Categories<span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu" role="menu" id="dropdownMenu" aria-labelledby="dropdownMenu">
                     <li ng-repeat="cat in statCats" ng-class="{ hover: isHidden(cat) }">
